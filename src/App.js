@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import K2 from '../src/katas/K2/K2';
+import '../node_modules/bootstrap/dist/css/bootstrap.css';
+import K3 from '../src/katas/K3/K3';
 
 class App extends Component {
     render() {
         return (
             <div className="App">
-                <K2 />
+                <K3 />
             </div>
         );
     }
