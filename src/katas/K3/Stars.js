@@ -1,18 +1,16 @@
 import React from 'react';
-
-const Stars = ()=>{
+import _ from 'lodash';
+import Star from './Star';
+const Stars = ({numberOfStars})=>{
+    let count = numberOfStars;
     return(
         <div className=" col-5">
-            <i className="fa fa-star star"/>
-            <i className="fa fa-star star"/>
-            <i className="fa fa-star star"/>
-            <i className="fa fa-star star"/>
-            <i className="fa fa-star star"/>
-            <i className="fa fa-star star"/>
-            <i className="fa fa-star star"/>
-            <i className="fa fa-star star"/>
-            <i className="fa fa-star star"/>
-            <i className="fa fa-star star"/>
+            {/* {_.range(numberOfStars).map((i)=>{ return(<Star key={i}/>);})} */}
+            {
+              _.range(count).map(
+                i =><Star key={i}/>
+              )
+            }
         </div>
     );
 };

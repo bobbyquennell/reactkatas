@@ -1,12 +1,10 @@
 import React from 'react';
+import Number from './Number';
 
-
-const Anwser = ()=>{
+const Anwser = ({selectedNumbers, updateSelectedNumbers, decideClassName})=>{
     return(
         <div className="col-5">
-            <span className="number">1</span>
-            <span className="number">2</span>
-            <span className="number">4</span>
+          {selectedNumbers.map(i => <Number updateSelectedNumbers={updateSelectedNumbers} decideClassName="number" key={i} value={i}/>)}
         </div>
     );
 };
