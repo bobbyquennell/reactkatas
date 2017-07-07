@@ -11,7 +11,9 @@ class K3 extends React.Component{
         super(props);
         this.state={
             selectedNumbers:[],
-            numberOfStars : Math.floor(Math.random()*9) + 1
+            usedNumbers:[],
+            numberOfStars : Math.floor(Math.random()*9) + 1,
+            btnStatus:''
         };
     }
     updateSelectedNumbers = (Number)=>{
@@ -20,11 +22,13 @@ class K3 extends React.Component{
                 console.log("selectedNumbers "+ prevState.selectedNumbers);
                 console.log("filter result:" + prevState.selectedNumbers.filter((i)=>Number!==i));
                 return({
-                    selectedNumbers: prevState.selectedNumbers.filter((i)=>Number!==i)
+                    selectedNumbers: prevState.selectedNumbers.filter((i)=>Number!==i),
+                    btnStatus: ''
                 });
             }else{
                 return({
-                    selectedNumbers: prevState.selectedNumbers.concat(Number)
+                    selectedNumbers: prevState.selectedNumbers.concat(Number),
+                    btnStatus: ''
                 });
             }
         });
@@ -37,6 +41,38 @@ class K3 extends React.Component{
             return 'number';
         }
     }
+    checkAnwser =()=>{
+        console.log("checking the anwser");
+        let sum = this.state.selectedNumbers.reduce((a,b)=>a + b, 0);
+        if(sum === 0){
+            return;
+        }
+        if(sum === this.state.numberOfStars){
+            if(this.state.btnStatus!=='success'){
+                this.setState({
+                    btnStatus: 'success'
+                });
+            }else{
+                //store the used number, refresh stars, reset the btnStatus
+                this.setState((prevState)=>{
+                    return({
+                        btnStatus:'',
+                        usedNumbers: prevState.usedNumbers.concat(this.state.selectedNumbers),
+                        selectedNumbers:[],
+                        numberOfStars : Math.floor(Math.random()*9) + 1
+                    });
+
+                });
+
+            }
+
+        }
+        else{
+            this.setState({
+                btnStatus: 'failed'
+            });
+        }
+    }
     render(){
         return(
             <div className="container K3">
@@ -45,7 +81,7 @@ class K3 extends React.Component{
                 <div className="row">
                     <Stars numberOfStars={this.state.numberOfStars}/>
                     <div className="col-2 centered">
-                        <Button />
+                        <Button checkAnwser={this.checkAnwser} btnStatus={this.state.btnStatus}/>
                         <Refresh />
                     </div>
                     <Anwser selectedNumbers={this.state.selectedNumbers} updateSelectedNumbers={this.updateSelectedNumbers} decideClassName={this.decideClassName}/>

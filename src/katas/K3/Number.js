@@ -4,6 +4,8 @@ class Number extends React.Component{
         super(props);
     }
     clickHandler=(event)=>{
+        if(this.props.decideClassName.indexOf('selected')>=0)
+            return;
         this.props.updateSelectedNumbers(this.props.value);
     }
     render(){
