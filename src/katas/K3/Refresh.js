@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Refresh = ()=>{
+const Refresh = ({refreshStars, RefreshTimesLeft})=>{
     return(
-        <button style={{textAlign:'center'}} className="btn btn-warning btn-sm clickable">
-            <i className="fa fa-refresh"/> 5
+        <button onClick={refreshStars} style={{textAlign:'center'}} className="btn btn-warning btn-sm clickable">
+            <i className="fa fa-refresh"/> {RefreshTimesLeft}
         </button>
     );
 };

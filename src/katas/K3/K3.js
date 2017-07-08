@@ -6,6 +6,9 @@ import Button from './Button';
 import Refresh from './Refresh';
 import Anwser from './Anwser';
 import NumberPool from './NumberPool';
+import Result from './Result';
+import _ from 'lodash';
+import HasPossibleSolution from './HasPossibleSolution';
 class K3 extends React.Component{
     constructor(props){
         super(props);
@@ -13,7 +16,9 @@ class K3 extends React.Component{
             selectedNumbers:[],
             usedNumbers:[],
             numberOfStars : Math.floor(Math.random()*9) + 1,
-            btnStatus:''
+            RefreshTimesLeft:5,
+            btnStatus:'',
+            result:''
         };
     }
     updateSelectedNumbers = (Number)=>{
@@ -36,6 +41,9 @@ class K3 extends React.Component{
     decideClassName =(number)=>{
         if(this.state.selectedNumbers.indexOf(number)>=0){
             return 'number selected';
+        }
+        else if(this.state.usedNumbers.indexOf(number)>=0){
+            return 'number used';
         }
         else{
             return 'number';
@@ -62,7 +70,7 @@ class K3 extends React.Component{
                         numberOfStars : Math.floor(Math.random()*9) + 1
                     });
 
-                });
+                },this.checkResult);
 
             }
 
@@ -73,6 +81,48 @@ class K3 extends React.Component{
             });
         }
     }
+    refreshStars = ()=>{
+        console.log('refreshStars');
+        this.setState((prevState)=>{
+            if(prevState.RefreshTimesLeft>0){
+                return{
+                    numberOfStars : Math.floor(Math.random()*9) + 1,
+                    RefreshTimesLeft: prevState.RefreshTimesLeft>0?prevState.RefreshTimesLeft - 1: 0
+                };
+            }
+        }, this.checkResult);
+    }
+    playAgain=()=>{
+        this.setState({
+            selectedNumbers:[],
+            usedNumbers:[],
+            numberOfStars : Math.floor(Math.random()*9) + 1,
+            RefreshTimesLeft:5,
+            btnStatus:'',
+            result:''
+        });
+    }
+    checkResult=()=>{
+        console.log('checkig result');
+        if(this.state.usedNumbers.length === 9){
+            this.setState({
+                result:'Done.Nice!'
+            });
+        }
+        else{
+            if(this.state.RefreshTimesLeft===0 && !this.ifAnySolution(this.state)){
+                this.setState({
+                    result:'Gamge Over!'
+                });
+            }
+        }
+    }
+    ifAnySolution=({usedNumbers, numberOfStars})=>{
+        const possibleNumbers = _.range(1,10).filter((i)=>usedNumbers.indexOf(i)===-1);
+        console.log('possibleNumbers: ' + possibleNumbers);
+        console.log('numberOfStars: ' + numberOfStars);
+        return HasPossibleSolution(possibleNumbers, numberOfStars);
+    }
     render(){
         return(
             <div className="container K3">
@@ -82,11 +132,18 @@ class K3 extends React.Component{
                     <Stars numberOfStars={this.state.numberOfStars}/>
                     <div className="col-2 centered">
                         <Button checkAnwser={this.checkAnwser} btnStatus={this.state.btnStatus}/>
-                        <Refresh />
+                        <Refresh refreshStars={this.refreshStars} RefreshTimesLeft={this.state.RefreshTimesLeft}/>
                     </div>
                     <Anwser selectedNumbers={this.state.selectedNumbers} updateSelectedNumbers={this.updateSelectedNumbers} decideClassName={this.decideClassName}/>
                 </div>
-                <NumberPool updateSelectedNumbers={this.updateSelectedNumbers} decideClassName={this.decideClassName}/>
+                <br/>
+                {
+                  this.state.result.length>0 ?
+                  <Result result={this.state.result} playAgain={this.playAgain}/>:
+                  <NumberPool updateSelectedNumbers={this.updateSelectedNumbers} decideClassName={this.decideClassName}/>
+                }
+
+
             </div>
         );
     }

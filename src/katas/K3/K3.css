@@ -27,6 +27,10 @@
     cursor:not-allowed;
     background-color: rgb(230, 230, 230);
 }
+.number.used{
+    cursor:not-allowed;
+    background-color: rgba(15, 129, 44, 0.5);
+}
 
 .star{
     margin: 0 10px;
