@@ -132,7 +132,7 @@ class K3 extends React.Component{
                 <div className="row">
                     <Stars numberOfStars={numberOfStars}/>
                     <div className="col-2 centered">
-                        <Button checkAnwser={this.checkAnwser} btnStatus={btnStatus}/>
+                        <Button checkAnwser={this.checkAnwser} btnStatus={btnStatus} selectedNumbers={selectedNumbers}/>
                         <Refresh refreshStars={this.refreshStars} RefreshTimesLeft={RefreshTimesLeft}/>
                     </div>
                     <Anwser selectedNumbers={selectedNumbers} updateSelectedNumbers={this.updateSelectedNumbers} decideClassName={this.decideClassName}/>

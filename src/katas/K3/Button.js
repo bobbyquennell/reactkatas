@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Button = ({checkAnwser, btnStatus})=>{
+const Button = ({checkAnwser, btnStatus, selectedNumbers})=>{
     let btn;
     switch (btnStatus)
     {
@@ -13,7 +13,7 @@ const Button = ({checkAnwser, btnStatus})=>{
         </button>;
         break;
     default:
-        btn =<button onClick={checkAnwser} className="btn btn-default clickable">=</button>;
+        btn =<button disabled={selectedNumbers.length === 0} onClick={checkAnwser} className="btn btn-default clickable">=</button>;
 
     }
     return(
