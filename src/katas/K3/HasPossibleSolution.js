@@ -1,3 +1,4 @@
+//code from: http://bit.ly/s-pcs
 const HasPosibleSolution = (arr, n)=>{
     if (arr.indexOf(n) >= 0) { return true; }
     if (arr[0] > n) { return false; }
