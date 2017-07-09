@@ -124,22 +124,23 @@ class K3 extends React.Component{
         return HasPossibleSolution(possibleNumbers, numberOfStars);
     }
     render(){
+        const {selectedNumbers, numberOfStars, btnStatus, result, RefreshTimesLeft} = this.state;//refactoring: destructure those objects from this.state to avoid lot of "this.state"
         return(
             <div className="container K3">
                 <h4>Play Nine</h4>
                 <hr/>
                 <div className="row">
-                    <Stars numberOfStars={this.state.numberOfStars}/>
+                    <Stars numberOfStars={numberOfStars}/>
                     <div className="col-2 centered">
-                        <Button checkAnwser={this.checkAnwser} btnStatus={this.state.btnStatus}/>
-                        <Refresh refreshStars={this.refreshStars} RefreshTimesLeft={this.state.RefreshTimesLeft}/>
+                        <Button checkAnwser={this.checkAnwser} btnStatus={btnStatus}/>
+                        <Refresh refreshStars={this.refreshStars} RefreshTimesLeft={RefreshTimesLeft}/>
                     </div>
-                    <Anwser selectedNumbers={this.state.selectedNumbers} updateSelectedNumbers={this.updateSelectedNumbers} decideClassName={this.decideClassName}/>
+                    <Anwser selectedNumbers={selectedNumbers} updateSelectedNumbers={this.updateSelectedNumbers} decideClassName={this.decideClassName}/>
                 </div>
                 <br/>
                 {
-                  this.state.result.length>0 ?
-                  <Result result={this.state.result} playAgain={this.playAgain}/>:
+                  result.length>0 ?
+                  <Result result={result} playAgain={this.playAgain}/>:
                   <NumberPool updateSelectedNumbers={this.updateSelectedNumbers} decideClassName={this.decideClassName}/>
                 }
 
