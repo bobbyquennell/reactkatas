@@ -103,19 +103,23 @@ class K3 extends React.Component{
         });
     }
     checkResult=()=>{
+        //conditionally update the state based on the previous state so we need to run setState(prevState=>{})
         console.log('checkig result');
-        if(this.state.usedNumbers.length === 9){
-            this.setState({
-                result:'Done.Nice!'
-            });
-        }
-        else{
-            if(this.state.RefreshTimesLeft===0 && !this.ifAnySolution(this.state)){
-                this.setState({
-                    result:'Gamge Over!'
+        this.setState(prevState=>{
+            if(prevState.usedNumbers.length === 9){
+                return({
+                    result:'Done.Nice!'
                 });
             }
-        }
+            else{
+                if(prevState.RefreshTimesLeft===0 && !this.ifAnySolution(prevState)){
+                    return({
+                        result:'Gamge Over!'
+                    });
+                }
+            }
+        });
+
     }
     ifAnySolution=({usedNumbers, numberOfStars})=>{
         const possibleNumbers = _.range(1,10).filter((i)=>usedNumbers.indexOf(i)===-1);
