@@ -8,6 +8,8 @@ import {
 import Home from './components/home/Home.js';
 import About from './components/about/About.js';
 import NavMenu from './components/common/NavMenu.js';
+import CourseList from './components/course/CourseList.js';
+
 const K4 = function(){
     return(
         <div>
@@ -17,6 +19,7 @@ const K4 = function(){
                     <hr/>
                     <Route exact path="/" component={Home}/>
                     <Route path="/about" component={About} />
+                    <Route path="/courses" component={CourseList}/>
                 </div>
             </Router>
         </div>

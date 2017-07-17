@@ -6,6 +6,8 @@ const NavMenu = function(){
             <Link to="/">Home</Link>
             {" | "}
             <Link to="/about">About</Link>
+            {" | "}
+            <Link to="/courses">Courses</Link>
         </nav>
     );
 };
