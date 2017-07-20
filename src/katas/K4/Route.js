@@ -9,20 +9,23 @@ import Home from './components/home/Home.js';
 import About from './components/about/About.js';
 import NavMenu from './components/common/NavMenu.js';
 import CourseList from './components/course/CourseList.js';
+import configureStore from './store/configureStore';
+import { Provider } from 'react-redux';
 
+const store = configureStore();
 const K4 = function(){
     return(
-        <div>
-            <Router>
-                <div>
-                    <NavMenu/>
-                    <hr/>
-                    <Route exact path="/" component={Home}/>
-                    <Route path="/about" component={About} />
-                    <Route path="/courses" component={CourseList}/>
-                </div>
-            </Router>
-        </div>
+            <Provider>
+                <Router>
+                    <div>
+                        <NavMenu/>
+                        <hr/>
+                        <Route exact path="/" component={Home}/>
+                        <Route path="/about" component={About} />
+                        <Route path="/courses" component={CourseList}/>
+                    </div>
+                </Router>
+            </Provider>
     );
 };
 
