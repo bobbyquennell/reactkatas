@@ -1,4 +1,4 @@
-export default function AddCourse(course){
+export  function AddCourse(course){
     return {
         type: "CREATE_COURSE",
         course

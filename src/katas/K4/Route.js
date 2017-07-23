@@ -15,7 +15,7 @@ import { Provider } from 'react-redux';
 const store = configureStore();
 const K4 = function(){
     return(
-            <Provider>
+            <Provider store={store}>
                 <Router>
                     <div>
                         <NavMenu/>

@@ -1,10 +1,12 @@
-import {createStore} from 'redux';
-import courseReducer from '../reducers/CourseReducer';
+import {createStore, applyMiddleware} from 'redux';
+import CourseReducer from '../reducers/CourseReducer';
+import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 
 //initialState is convenient for serverside rendering
 export default function configureStore(initialState){
     return createStore(
-        courseReducer,
-        initialState
+        CourseReducer,
+        initialState,
+        applyMiddleware(reduxImmutableStateInvariant())
     );
 }
