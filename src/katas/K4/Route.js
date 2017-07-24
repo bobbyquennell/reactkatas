@@ -16,6 +16,8 @@ const store = configureStore();
 const K4 = function(){
     return(
             <Provider store={store}>
+                {/* Provider component provides the store to its child components // see details: http://www.sohamkamani.com/blog/2017/03/31/react-redux-connect-explained/ */}
+
                 <Router>
                     <div>
                         <NavMenu/>

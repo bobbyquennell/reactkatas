@@ -44,7 +44,7 @@ class CourseList extends React.Component{
 function mapStateToProps(state, ownProps){
     console.log(state);
     return {
-        courses: state.CourseReducer
+        courses: state//actually, if there is no rootReducer(no combineReducer()), state === CourseReducer, so if we use state.CourseReducer instead(actually state.CourseReducer is undefined), this.props.courses will be undefined
     };
 }
 export default connect(mapStateToProps)(CourseList);
