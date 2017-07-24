@@ -7,6 +7,8 @@ export default function configureStore(initialState){
     return createStore(
         CourseReducer,
         initialState,
-        applyMiddleware(reduxImmutableStateInvariant())
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+        applyMiddleware(reduxImmutableStateInvariant()
+        )
     );
 }
