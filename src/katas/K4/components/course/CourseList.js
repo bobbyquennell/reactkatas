@@ -30,7 +30,7 @@ class CourseList extends React.Component{
 
             <div>
                 <h2>CourseList Page</h2>
-
+                {this.props.courses.map(this.courseRow)}
                 <form onSubmit={this.submitHandler}>
                     <input type="text" placeholder="course name" value={this.state.courseName} onChange={this.onChangeHandler} required/>
                     <button type="submit">Add Course</button>
