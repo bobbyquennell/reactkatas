@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import * as courseActions from '../../actions/courseActions';
 
 class CourseList extends React.Component{
     constructor(props){
@@ -12,8 +10,7 @@ class CourseList extends React.Component{
 
     submitHandler = (event)=>{
         event.preventDefault();
-        //alert(`adding course: ${this.state.courseName}`);
-        this.props.dispatch(courseActions.AddCourse(this.state.courseName));
+        alert(`adding course: ${this.state.courseName}`);
     }
     onChangeHandler = (event)=>{
         this.setState({
@@ -30,7 +27,6 @@ class CourseList extends React.Component{
 
             <div>
                 <h2>CourseList Page</h2>
-                {this.props.courses.map(this.courseRow)}
                 <form onSubmit={this.submitHandler}>
                     <input type="text" placeholder="course name" value={this.state.courseName} onChange={this.onChangeHandler} required/>
                     <button type="submit">Add Course</button>
@@ -41,10 +37,5 @@ class CourseList extends React.Component{
     }
 
 }
-function mapStateToProps(state, ownProps){
-    console.log(state);
-    return {
-        courses: state//actually, if there is no rootReducer(no combineReducer()), state === CourseReducer, so if we use state.CourseReducer instead(actually state.CourseReducer is undefined), this.props.courses will be undefined
-    };
-}
-export default connect(mapStateToProps)(CourseList);
+
+export default CourseList;
