@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
 class CourseList extends React.Component{
     constructor(props){
@@ -26,7 +27,10 @@ class CourseList extends React.Component{
         /* 2) add course to course List in a redux way A: the most verbose way*/
         //this.props.dispatch(courseActions.createCourse(this.state.courseName));
         /* 3) add course to course list in a redux way B: utilize mapDispatchToProps function*/
-        this.props.createCourse(this.state.courseName);
+        //this.props.createCourse(this.state.courseName);
+        /* 3.1) using redux helper: bindActionCreators in mapDispatchToProps function */
+        /* bind actions to props by using a redux helper: bindActionCreators*/
+        this.props.actions.createCourse(this.state.courseName);
         this.setState({
             courseName: ""
         });
@@ -67,7 +71,9 @@ function mapStateToProps(state){
 }
 function mapDispatchToProps(dispatch){// the function's name can be anything, does not have to be mapDispatchToProps
     return{
-        createCourse: course=>dispatch(courseActions.createCourse(course))
+        //createCourse: course=>dispatch(courseActions.createCourse(course))
+        /* bind actions to props by using a redux helper: bindActionCreators*/
+        actions: bindActionCreators(courseActions, dispatch)
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(CourseList);
