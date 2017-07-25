@@ -4,13 +4,21 @@ class CourseList extends React.Component{
     constructor(props){
         super(props);
         this.state ={
-            courseName: ""
+            courseName: "",
+            courseList:[]
         };
     }
 
     submitHandler = (event)=>{
         event.preventDefault();
-        alert(`adding course: ${this.state.courseName}`);
+        //alert(`adding course: ${this.state.courseName}`);
+        this.setState((prevState)=>{
+            return({
+                courseList: [...prevState.courseList,
+                    this.state.courseName],
+                courseName: ""
+            });
+        });
     }
     onChangeHandler = (event)=>{
         this.setState({
@@ -31,7 +39,8 @@ class CourseList extends React.Component{
                     <input type="text" placeholder="course name" value={this.state.courseName} onChange={this.onChangeHandler} required/>
                     <button type="submit">Add Course</button>
                 </form>
-                <p>the courses will listed below</p>
+                <h4>course list:</h4>
+                {this.state.courseList.map(this.courseRow)}
             </div>
         );
     }
