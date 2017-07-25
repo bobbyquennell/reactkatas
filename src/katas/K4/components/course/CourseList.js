@@ -13,6 +13,7 @@ class CourseList extends React.Component{
     submitHandler = (event)=>{
         event.preventDefault();
         //alert(`adding course: ${this.state.courseName}`);
+        /* 1) add course to course List in a react way, without Redux*/
         // this.setState((prevState)=>{
         //     return({
         //         // courseList: [...prevState.courseList,
@@ -21,7 +22,11 @@ class CourseList extends React.Component{
         //         courseName: ""
         //     });
         // });
-        this.props.dispatch(courseActions.createCourse(this.state.courseName));
+
+        /* 2) add course to course List in a redux way A: the most verbose way*/
+        //this.props.dispatch(courseActions.createCourse(this.state.courseName));
+        /* 3) add course to course list in a redux way B: utilize mapDispatchToProps function*/
+        this.props.createCourse(this.state.courseName);
         this.setState({
             courseName: ""
         });
@@ -60,4 +65,9 @@ function mapStateToProps(state){
         courseList: state
     };
 }
-export default connect(mapStateToProps)(CourseList);
+function mapDispatchToProps(dispatch){// the function's name can be anything, does not have to be mapDispatchToProps
+    return{
+        createCourse: course=>dispatch(courseActions.createCourse(course))
+    };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(CourseList);
