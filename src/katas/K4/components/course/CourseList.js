@@ -1,23 +1,29 @@
 import React from 'react';
-
+import {connect} from 'react-redux';
+import * as courseActions from '../../actions/courseActions';
 class CourseList extends React.Component{
     constructor(props){
         super(props);
         this.state ={
-            courseName: "",
-            courseList:[]
+            courseName: ""
+            // courseList:[]
         };
     }
 
     submitHandler = (event)=>{
         event.preventDefault();
         //alert(`adding course: ${this.state.courseName}`);
-        this.setState((prevState)=>{
-            return({
-                courseList: [...prevState.courseList,
-                    this.state.courseName],
-                courseName: ""
-            });
+        // this.setState((prevState)=>{
+        //     return({
+        //         // courseList: [...prevState.courseList,
+        //         //     this.state.courseName],
+        //         courseList: prevState.courseList.concat(this.state.courseName),
+        //         courseName: ""
+        //     });
+        // });
+        this.props.dispatch(courseActions.createCourse(this.state.courseName));
+        this.setState({
+            courseName: ""
         });
     }
     onChangeHandler = (event)=>{
@@ -25,8 +31,8 @@ class CourseList extends React.Component{
             courseName: event.target.value
         });
     }
-    courseRow(courseName, index){
-        return <div key={index}>{courseName}</div>;
+    courseRow(title, index){
+        return <div key={index}>{title}</div>;
     }
 
     render(){
@@ -40,11 +46,18 @@ class CourseList extends React.Component{
                     <button type="submit">Add Course</button>
                 </form>
                 <h4>course list:</h4>
-                {this.state.courseList.map(this.courseRow)}
+                {this.props.courseList.map(this.courseRow)}
             </div>
         );
     }
 
 }
 
-export default CourseList;
+// using react-redux connect function to connect your component to the redux store
+//see: https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options
+function mapStateToProps(state){
+    return{
+        courseList: state
+    };
+}
+export default connect(mapStateToProps)(CourseList);

@@ -10,9 +10,14 @@ import About from './components/about/About.js';
 import NavMenu from './components/common/NavMenu.js';
 import CourseList from './components/course/CourseList.js';
 
+import {Provider} from 'react-redux';
+import generateStore from './generateStore';
+
+let K4store = generateStore();
 const K4 = function(){
 /* Provider component provides the store to its child components // see details: http://www.sohamkamani.com/blog/2017/03/31/react-redux-connect-explained/ */
     return(
+        <Provider store={K4store}>
             <Router>
                 <div>
                     <NavMenu/>
@@ -22,6 +27,7 @@ const K4 = function(){
                     <Route path="/courses" component={CourseList}/>
                 </div>
             </Router>
+        </Provider>
     );
 };
 
