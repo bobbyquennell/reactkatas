@@ -6,6 +6,7 @@ import {courseReducer} from './reducers/courseReducer';
 export default function generateStore(initialState){
     return createStore(
         courseReducer,
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
         initialState
     );
 }
