@@ -45,7 +45,7 @@ class CourseList extends React.Component{
     }
 
     render(){
-        console.log(this.props.courses);
+        console.log(this.props.courseList);
         return(
 
             <div>
