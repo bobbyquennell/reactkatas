@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
+import * as  api from '../../api/courseApi';
 class CourseList extends React.Component{
     constructor(props){
         super(props);
@@ -30,10 +31,16 @@ class CourseList extends React.Component{
         //this.props.createCourse(this.state.courseName);
         /* 3.1) using redux helper: bindActionCreators in mapDispatchToProps function */
         /* bind actions to props by using a redux helper: bindActionCreators*/
+        api.loadCourses().then(result=>{
+            console.log(result);
+        }).catch(result=>{
+            console.log(result);
+        });
         this.props.actions.createCourse(this.state.courseName);
         this.setState({
             courseName: ""
         });
+
     }
     onChangeHandler = (event)=>{
         this.setState({
