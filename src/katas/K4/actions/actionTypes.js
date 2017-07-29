@@ -3,3 +3,4 @@
 //see : http://redux.js.org/docs/recipes/ReducingBoilerplate.html
 //for details
 export const CREATE_COURSE = "CREATE_COURSE";
+export const LOAD_COURSES_SUCCESS = "LOAD_COURSES_SUCCESS";
