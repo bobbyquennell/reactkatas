@@ -2,7 +2,7 @@ import React from 'react';
 import Style from './CourseTableItem-styles';
 const CourseTableItem = ({title, lecturer, address, date, time})=>{
     return (
-        <tr>
+        <tr style={Style.tr}>
             <td style={Style.td}>{title}</td>
             <td style={Style.td}>{lecturer}</td>
             <td style={Style.td}>{address}</td>

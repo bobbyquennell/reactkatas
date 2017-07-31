@@ -4,6 +4,10 @@ export default {
         margin:'20px auto'
     },
     th:{
-        width: '20%'
-    }
+        width: '20%',
+        textAlign: 'center'
+    },
+    tr:{
+        borderBottom:'solid 1px lightGrey'
+    },
 };
