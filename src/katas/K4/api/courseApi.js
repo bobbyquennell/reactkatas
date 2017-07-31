@@ -4,8 +4,20 @@
 
 /* mock data */
 let courses = [
-    "英语课",
-    "数学课"
+    {
+        title: "English",
+        address: 'Main Building Room 401',
+        date: '2017-08-01',
+        time: '2:00pm',
+        lecturer: 'Tommy Johnes'
+    },
+    {
+        title: "Math",
+        address: 'Main Building Room 402',
+        date: '2017-08-02',
+        time: '2:00pm',
+        lecturer: 'Tommy Johnes'
+    },
 ];
 /* simulate api delay */
 const delay = 2000;

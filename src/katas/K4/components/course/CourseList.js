@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
 import * as  api from '../../api/courseApi';
+import CourseTable from './CourseTable';
 class CourseList extends React.Component{
     constructor(props){
         super(props);
@@ -47,9 +48,9 @@ class CourseList extends React.Component{
             courseName: event.target.value
         });
     }
-    courseRow(title, index){
-        return <div key={index}>{title}</div>;
-    }
+    // courseRow(course, index){
+    //     return <div key={index}>{course.title}</div>;
+    // }
 
     render(){
         console.log(this.props.courseList);
@@ -62,7 +63,8 @@ class CourseList extends React.Component{
                     <button type="submit">Add Course</button>
                 </form>
                 <h4>course list:</h4>
-                {this.props.courseList.map(this.courseRow)}
+                <CourseTable courses={this.props.courseList}/>
+                {/* {this.props.courseList.map(this.courseRow)} */}
             </div>
         );
     }
