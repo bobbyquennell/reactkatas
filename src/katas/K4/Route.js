@@ -5,11 +5,12 @@ import {
     Link
 } from 'react-router-dom';
 
-import Home from './components/home/Home.js';
-import About from './components/about/About.js';
-import NavMenu from './components/common/NavMenu.js';
-import CourseList from './components/course/CourseList.js';
+import Home from './components/home/Home';
+import About from './components/about/About';
+import NavMenu from './components/common/NavMenu';
+import CourseList from './components/course/CourseList';
 import {loadCourses} from './actions/courseActions';
+import CourseEdit from './components/course/CourseEdit';
 import {Provider} from 'react-redux';
 import generateStore from './generateStore';
 
@@ -26,6 +27,7 @@ const K4 = function(){
                     <Route exact path="/" component={Home}/>
                     <Route path="/about" component={About} />
                     <Route path="/courses" component={CourseList}/>
+                    <Route path="/course/:id" component={CourseEdit}/>
                 </div>
             </Router>
         </Provider>
