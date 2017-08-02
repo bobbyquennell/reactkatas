@@ -58,7 +58,8 @@
     "test": "node scripts/test.js --env=jsdom",
     "flowInit": "node_modules/.bin/flow init",
     "flowStatus": "node_modules/.bin/flow status",
-    "flowStop": "node_modules/.bin/flow stop"
+    "flowStop": "node_modules/.bin/flow stop",
+    "flow": "node_modules/.bin/flow"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
