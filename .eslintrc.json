@@ -20,7 +20,7 @@
         "strict":0,
         "indent": [
             "warn",
-            4
+            2
         ],
         "linebreak-style": 0,
         "quotes": 0,
