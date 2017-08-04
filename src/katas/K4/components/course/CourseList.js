@@ -21,6 +21,7 @@ class CourseList extends Component{
   {
     courseName: string;
   }
+  //for more details, see: https://flow.org/en/docs/types/classes/
   */
   submitHandler = (event)=>{
     event.preventDefault();
