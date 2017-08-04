@@ -1,19 +1,27 @@
 // @flow
-import React from 'react';
+import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
 import * as  api from '../../api/courseApi';
 import CourseTable from './CourseTable';
-class CourseList extends React.Component{
+
+class CourseList extends Component{
+
   constructor(props){
     super(props);
-    this.state ={
+    this.state = {
       courseName: ""
           // courseList:[]
     };
   }
-
+  state: Object;//make flow happy way 1): https://github.com/facebook/flow/issues/1594
+  /* //make flow happy way 2): https://stackoverflow.com/questions/36860349/flow-react-native-is-giving-me-errors-for-using-this-state
+  state:
+  {
+    courseName: string;
+  }
+  */
   submitHandler = (event)=>{
     event.preventDefault();
       //alert(`adding course: ${this.state.courseName}`);
