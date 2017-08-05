@@ -97,7 +97,8 @@
   },
   "babel": {
     "presets": [
-      "react-app"
+      "react-app",
+      "flow"
     ]
   },
   "eslintConfig": {
