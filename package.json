@@ -61,7 +61,8 @@
     "babel-cli": "^6.24.1",
     "babel-preset-flow": "^6.23.0",
     "eslint-watch": "^3.1.2",
-    "redux-immutable-state-invariant": "^2.0.0"
+    "redux-immutable-state-invariant": "^2.0.0",
+    "stylelint-config-standard": "^17.0.0"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -102,5 +103,8 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "stylelint":{
+    "extends":"C:/Users/bobby/.atom/packages/linter-stylelint/node_modules/stylelint-config-standard"
   }
 }
