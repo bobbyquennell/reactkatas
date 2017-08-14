@@ -61,7 +61,9 @@
     "babel-cli": "^6.24.1",
     "babel-preset-flow": "^6.23.0",
     "eslint-watch": "^3.1.2",
+    "node-sass": "^4.5.3",
     "redux-immutable-state-invariant": "^2.0.0",
+    "sass-loader": "^6.0.6",
     "stylelint": "^8.0.0",
     "stylelint-config-css-modules": "^1.1.0",
     "stylelint-config-standard": "^17.0.0"

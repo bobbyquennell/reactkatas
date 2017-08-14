@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-    BrowserRouter as Router,
-    Route,
-    Link
-} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 import Home from './components/home/Home';
 import About from './components/about/About';
@@ -16,22 +12,22 @@ import generateStore from './generateStore';
 
 let K4store = generateStore();
 K4store.dispatch(loadCourses());
-const K4 = function(){
-/* Provider component provides the store to its child components // see details: http://www.sohamkamani.com/blog/2017/03/31/react-redux-connect-explained/ */
-    return(
-        <Provider store={K4store}>
-            <Router>
-                <div>
-                    <NavMenu/>
-                    <hr/>
-                    <Route exact path="/" component={Home}/>
-                    <Route path="/about" component={About} />
-                    <Route path="/courses" component={CourseList}/>
-                    <Route path="/course/:id" component={CourseEdit}/>
-                </div>
-            </Router>
-        </Provider>
-    );
+const K4 = function() {
+  /* Provider component provides the store to its child components // see details: http://www.sohamkamani.com/blog/2017/03/31/react-redux-connect-explained/ */
+  return (
+    <Provider store={K4store}>
+      <Router>
+        <div>
+          <NavMenu/>
+          <hr/>
+          <Route exact path="/" component={Home}/>
+          <Route path="/about" component={About}/>
+          <Route path="/courses" component={CourseList}/>
+          <Route path="/course/:id" component={CourseEdit}/>
+        </div>
+      </Router>
+    </Provider>
+  );
 };
 
 export default K4;

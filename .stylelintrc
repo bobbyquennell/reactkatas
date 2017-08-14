@@ -1,7 +1,7 @@
 {
   "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-css-modules"
+    "./Users/bobby/.npm-packages/.npm-packages/lib/node_modules/stylelint-config-standard",
+    "./Users/bobby/.npm-packages/.npm-packages/lib/node_modules/stylelint-config-css-modules/stylelint-config-css-modules"
   ],
   "rules": {
     "selector-max-type": 0,
