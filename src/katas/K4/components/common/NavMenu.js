@@ -5,11 +5,11 @@ const NavMenu = function(){
   console.log(styles.root);
   return (
   <nav className={styles.root}>
-    <Link to="/">Home</Link>
+    <Link className={styles.item} to="/">Home</Link>
     {" | "}
-    <Link to="/about">About</Link>
+    <Link className={styles.item} to="/about">About</Link>
     {" | "}
-    <Link to="/courses">Courses</Link>
+    <Link className={styles.item} to="/courses">Courses</Link>
   </nav>
   );
 };

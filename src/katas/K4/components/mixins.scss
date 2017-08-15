@@ -1,0 +1,10 @@
+@import 'colors';
+
+%link {
+  color: $gray-light;
+  text-decoration: none;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}

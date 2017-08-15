@@ -1,4 +1,11 @@
+@import '../mixins';
+
 .root {
-  background-color: rgb(59, 123, 164);
-  color: red;
+  background-color: rgb(133, 166, 222);
+  //composes: link;
+}
+
+.item {
+  @extend %link;//https://github.com/stylelint/stylelint/issues/1612
+  // needs to figure out the css modules composes solution here
 }
