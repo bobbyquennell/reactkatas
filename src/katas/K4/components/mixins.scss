@@ -1,4 +1,5 @@
-@import 'colors';
+@import "colors";
+// extends
 
 %link {
   color: $gray-light;
@@ -6,5 +7,6 @@
   &:hover {
     cursor: pointer;
     text-decoration: underline;
+    color: $pink;
   }
 }
