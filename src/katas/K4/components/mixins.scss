@@ -1,12 +1,22 @@
 @import "colors";
 // extends
 
+.link {
+  color: $gray-light;
+  text-decoration: none;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: $mid-gray-dark;
+  }
+}
+
 %link {
   color: $gray-light;
   text-decoration: none;
   &:hover {
     cursor: pointer;
     text-decoration: underline;
-    color: $pink;
+    color: $mid-gray-dark;
   }
 }

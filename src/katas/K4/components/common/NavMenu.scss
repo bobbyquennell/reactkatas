@@ -1,4 +1,5 @@
 // @import '../mixins';
+
 @import "../../theme";
 
 .root {
@@ -6,9 +7,26 @@
   //composes: link;
 }
 
+/*  note: try to avoid using sass @extend
+  read: https://www.sitepoint.com/avoid-sass-extend/
+        http://pressupinc.com/blog/2014/11/dont-overextend-yourself-in-sass/
+ */
+
+// .item {
+//   @extend %link;//https://github.com/stylelint/stylelint/issues/1612
+//   font-size: $font-size-big;
+//   font-weight: $font-weight-semi-bold;
+// }
+
+/* composition in a composes way
+  further read: https://glenmaddern.com/articles/css-modules
+  https://css-tricks.com/css-modules-part-1-need/
+*/
+
 .item {
-  @extend %link;//https://github.com/stylelint/stylelint/issues/1612
-  // needs to figure out the css modules composes solution here
+  composes: link from "../mixins.scss";
   font-size: $font-size-big;
   font-weight: $font-weight-semi-bold;
 }
+
+/* some other good reads: https://tylergaw.com/articles/sass-to-postcss */
