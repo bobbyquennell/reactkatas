@@ -1,8 +1,9 @@
-$prefered-font: "Roboto", "Helvetica", "Arial", sans-serif;
+
+ $prefered-font: "Roboto", "Helvetica", "Arial", sans-serif;
 
 $unit: 10px;
 
-$preferred-font: "Roboto", "Helvetica", "Arial", sans-serif;
+//$prefered-font: "Open Sans", sans-serif;
 $font-size: calc(1.6 * #{$unit});
 $font-size-tiny: calc(1.2 * #{$unit});
 $font-size-small: calc(1.4 * #{$unit});

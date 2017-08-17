@@ -8,13 +8,20 @@
   font-weight: $font-weight-normal;
 }
 
+body {
+  margin: 20px auto;
+  max-width: 960px;
+}
+
 h2 {
   font-size: calc(2 * #{$unit});
   font-weight: $font-weight-bold;
 }
+
 h4 {
   font-weight: $font-weight-semi-bold;
 }
+
 th {
   font-size: calc(1.5 * #{$unit});
   font-weight: $font-weight-bold;

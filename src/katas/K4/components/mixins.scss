@@ -2,21 +2,21 @@
 // extends
 
 .link {
-  color: $gray-light;
+  color: $mid-gray-dark;
   text-decoration: none;
   &:hover {
     cursor: pointer;
-    text-decoration: underline;
-    color: $mid-gray-dark;
+    // color: $gray-light;
+    text-shadow: 2px 4px 2px $gray-medium;
   }
 }
 
 %link {
-  color: $gray-light;
+  color: $mid-gray-dark;
   text-decoration: none;
   &:hover {
     cursor: pointer;
     text-decoration: underline;
-    color: $mid-gray-dark;
+    color: $gray-light;
   }
 }

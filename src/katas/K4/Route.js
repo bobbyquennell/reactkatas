@@ -4,11 +4,13 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import Home from './components/home/Home';
 import About from './components/about/About';
 import NavMenu from './components/common/NavMenu';
+import Footer from './components/common/footer/footer';
 import CourseList from './components/course/CourseList';
 import {loadCourses} from './actions/courseActions';
 import CourseEdit from './components/course/CourseEdit';
 import {Provider} from 'react-redux';
 import generateStore from './generateStore';
+
 
 let K4store = generateStore();
 K4store.dispatch(loadCourses());
@@ -24,6 +26,7 @@ const K4 = function() {
           <Route path="/about" component={About}/>
           <Route path="/courses" component={CourseList}/>
           <Route path="/course/:id" component={CourseEdit}/>
+          <Footer/>
         </div>
       </Router>
     </Provider>
