@@ -1,0 +1,23 @@
+@import "../../../theme";
+
+.root {
+  border-radius: 6px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.select {
+  composes: root;
+  font-size: $font-size-big;
+  margin: 10px auto;
+  width: 100%;
+  outline: 0;
+}
+
+.option {
+  font-size: $font-size-big;
+}
+
+.title {
+  composes: title from "../TextInput/TextInput.scss";
+}
