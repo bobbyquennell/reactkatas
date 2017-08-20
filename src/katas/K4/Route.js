@@ -3,8 +3,8 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 import Home from './components/home/Home';
 import About from './components/about/About';
-import NavMenu from './components/common/NavMenu';
-import Footer from './components/common/footer/footer';
+import NavMenu from './components/common/Header/NavMenu';
+import Footer from './components/common/Footer/Footer';
 import CourseList from './components/course/CourseList';
 import {loadCourses} from './actions/courseActions';
 import CourseEdit from './components/course/CourseEdit';

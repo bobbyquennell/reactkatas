@@ -1,6 +1,6 @@
 // @import '../mixins';
 
-@import "../../theme";
+@import "../../../theme";
 
 @keyframes pulse {
   0% {
@@ -36,7 +36,7 @@
 */
 
 .item {
-  composes: link from "../mixins.scss";
+  composes: link from "../../mixins.scss";
   font-size: $font-size-big;
   font-weight: $font-weight-semi-bold;
   margin: 10px 20px;
