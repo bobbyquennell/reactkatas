@@ -2,15 +2,16 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
-
+import CourseForm from './CourseForm';
 class CourseEdit extends React.Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     return (
-      <div>
-        Course Edit Page
+      <div style={{width:"50%", margin:"10px auto"}}>
+         <CourseForm />
       </div>
     );
   }
