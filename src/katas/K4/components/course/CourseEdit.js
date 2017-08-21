@@ -6,18 +6,32 @@ import CourseForm from './CourseForm';
 class CourseEdit extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      course: Object.assign({}, this.props.course)
+    };
   }
 
   render() {
     return (
-      <div style={{width:"50%", margin:"10px auto"}}>
-         <CourseForm />
+      <div style={{width:"80%", margin:"auto"}}>
+        <CourseForm course={this.state.course} lecturers={[]}/>
       </div>
+
     );
   }
 }
 
-const mapStateToProps = () => {};
+const mapStateToProps = () => {
+  let course = {
+    id: "",
+    title: "",
+    address: '',
+    date: '',
+    time: '',
+    lecturer: ''
+  };
+  return {course: course};
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {

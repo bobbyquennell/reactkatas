@@ -1,33 +1,27 @@
+// @flow
 import React from 'react';
 import TextInput from '../common/TextInput/TextInput';
 import Button from '../common/Button/Button';
 import Select from '../common/SelectInput/SelectInput';
 import DatePicker from '../common/DatePicker/DatePicker';
 import TimePicker from '../common/TimePicker/TimePicker';
-const options = [
-  {
-    value: "Bill",
-    name: "Bill"
-  }, {
-    value: "Tommy",
-    name: "Tommy"
-  }, {
-    value: "Mike",
-    name: "Mike"
-  }
-];
+import PropTypes from 'prop-types';
 
-const CourseForm = ()=>{
+const CourseForm = ({course, lecturers})=>{
   return (
     <form action="">
-      <TextInput title="Course Name"/>
-      <Select options={options} title="Lecturer Name"/>
-      <TextInput title="Address"/>
-      <DatePicker title="Date"/>
-      <TimePicker title="Time"/>
+      <TextInput title="Course Name" value={course.title}/>
+      <Select options={lecturers} title="Lecturer Name" defaultOption={{name:"Choose Lecturer", value:""}}/>
+      <TextInput title="Address" value={course.address}/>
+      <DatePicker title="Date" value={course.date}/>
+      <TimePicker title="Time" value={course.time}/>
       <Button name="Submit"/>
     </form>
   );
+};
+CourseForm.propTypes = {
+  course: PropTypes.object.isRequired,
+  lecturers: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default CourseForm;
