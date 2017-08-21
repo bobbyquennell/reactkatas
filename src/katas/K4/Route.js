@@ -28,6 +28,7 @@ const K4 = function() {
           <Route path="/about" component={About}/>
           <Route path="/courses" component={CourseList}/>
           <Route path="/course/:id" component={CourseEdit}/>
+          <Route exact path="/course" component={CourseEdit}/>
           <Footer/>
         </div>
       </Router>
