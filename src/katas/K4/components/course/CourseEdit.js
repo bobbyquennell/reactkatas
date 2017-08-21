@@ -14,7 +14,7 @@ class CourseEdit extends React.Component {
   render() {
     return (
       <div style={{width:"80%", margin:"auto"}}>
-        <CourseForm course={this.state.course} lecturers={this.props.lecturers}/>
+        <CourseForm course={this.state.course} lecturerOptions={this.props.lecturers}/>
       </div>
 
     );
@@ -32,7 +32,14 @@ const mapStateToProps = (state) => {
   };
   return {
     course: course,
-    lecturers: state.lecturerReducer
+    // the lecturers' structure loaded from api is different with the lecturers for dropdown list. so we need to map the data format below.
+    lecturers: state.lecturerReducer.map(
+      lecturer=>{
+        return{
+          value: lecturer.id,
+          name: lecturer.name
+        };
+      })
   };
 };
 
