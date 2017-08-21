@@ -14,14 +14,14 @@ class CourseEdit extends React.Component {
   render() {
     return (
       <div style={{width:"80%", margin:"auto"}}>
-        <CourseForm course={this.state.course} lecturers={[]}/>
+        <CourseForm course={this.state.course} lecturers={this.props.lecturers}/>
       </div>
 
     );
   }
 }
 
-const mapStateToProps = () => {
+const mapStateToProps = (state) => {
   let course = {
     id: "",
     title: "",
@@ -30,7 +30,10 @@ const mapStateToProps = () => {
     time: '',
     lecturer: ''
   };
-  return {course: course};
+  return {
+    course: course,
+    lecturers: state.lecturerReducer
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

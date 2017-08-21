@@ -79,7 +79,7 @@ class CourseList extends Component {
 // using react-redux connect function to connect your component to the redux store
 //see: https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options
 function mapStateToProps(state) {
-  return {courseList: state};
+  return {courseList: state.courseReducer};
 }
 function mapDispatchToProps(dispatch) { // the function's name can be anything, does not have to be mapDispatchToProps
   return {

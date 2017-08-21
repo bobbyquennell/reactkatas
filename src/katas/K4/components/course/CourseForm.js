@@ -11,7 +11,7 @@ const CourseForm = ({course, lecturers})=>{
   return (
     <form action="">
       <TextInput title="Course Name" value={course.title}/>
-      <Select options={lecturers} title="Lecturer Name" defaultOption={{name:"Choose Lecturer", value:""}}/>
+      <Select options={lecturers} title="Lecturer Name" defaultOption={{name:"Choose Lecturer", value:"haha"}}/>
       <TextInput title="Address" value={course.address}/>
       <DatePicker title="Date" value={course.date}/>
       <TimePicker title="Time" value={course.time}/>
