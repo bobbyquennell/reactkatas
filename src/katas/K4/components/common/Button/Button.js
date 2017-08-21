@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './Button.scss';
 
 const Button = ({name})=>{
@@ -8,4 +9,7 @@ const Button = ({name})=>{
   );
 };
 
+Button.propTypes = {
+  name: PropTypes.string.isRequired
+};
 export default Button;

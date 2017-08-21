@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './DatePicker.scss';
 const DatePicker = function({ title }){
   return (
@@ -9,6 +10,10 @@ const DatePicker = function({ title }){
     </div>
 
   );
+};
+
+DatePicker.propTypes = {
+  title: PropTypes.string.isRequired
 };
 
 export default DatePicker;

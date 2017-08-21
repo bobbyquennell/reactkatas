@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './SelectInput.scss';
 const SelectInput = ({options, title})=>{
   return (
@@ -11,4 +12,8 @@ const SelectInput = ({options, title})=>{
   );
 };
 
+SelectInput.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.object).isRequired,
+  title: PropTypes.string.isRequired
+};
 export default SelectInput;

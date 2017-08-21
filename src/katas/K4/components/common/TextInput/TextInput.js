@@ -1,6 +1,8 @@
 // @flow
 import React from 'react';
 import styles from './TextInput.scss';
+import PropTypes from 'prop-types';
+
 const TextInput = function({ title }){
   return (
     <div>
@@ -11,4 +13,7 @@ const TextInput = function({ title }){
   );
 };
 
+TextInput.propTypes = {
+  title: PropTypes.string.isRequired
+};
 export default TextInput;
