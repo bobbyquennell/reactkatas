@@ -2,18 +2,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './DatePicker.scss';
-const DatePicker = function({ title }){
+const DatePicker = function({ label, name, value, onChange }){
   return (
     <div>
-      <span className={styles.title}>{title}</span>
-      <input className={styles.root} type="date"/>
+      <label className={styles.title} htmlFor={name}>{label}</label>
+      <input className={styles.root} name={name} value={value} type="date" onChange={onChange}/>
     </div>
 
   );
 };
 
 DatePicker.propTypes = {
-  title: PropTypes.string.isRequired
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value:PropTypes.string.isRequired,
+  onChange:PropTypes.func.isRequired
 };
 
 export default DatePicker;

@@ -3,18 +3,20 @@ import React from 'react';
 import styles from './TextInput.scss';
 import PropTypes from 'prop-types';
 
-const TextInput = function({ title, value }){
+const TextInput = function({ label, value, name, onChange}){
   return (
     <div>
-      <span className={styles.title}>{title}</span>
-      <input className={styles.root} type="text" value={value}/>
+      <label className={styles.title} htmlFor={name}>{label}</label>
+      <input className={styles.root} type="text" value={value} name={name} onChange={onChange}/>
     </div>
 
   );
 };
 
 TextInput.propTypes = {
-  title: PropTypes.string.isRequired,
-  value: PropTypes.string
+  label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired
 };
 export default TextInput;

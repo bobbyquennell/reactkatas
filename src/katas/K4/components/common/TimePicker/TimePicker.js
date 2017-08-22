@@ -2,18 +2,21 @@
 import React from 'react';
 import styles from './TimePicker.scss';
 import PropTypes from 'prop-types';
-const TimePicker = function({ title }){
+const TimePicker = function({ label, name, value, onKeyPress }){
   return (
     <div>
-      <span className={styles.title}>{title}</span>
-      <input className={styles.root} type="time"/>
+      <label className={styles.title} htmlFor={name}>{label}</label>
+      <input className={styles.root} name={name} type="time" value={value} onKeyPress={onKeyPress}/>
     </div>
 
   );
 };
 
 TimePicker.propTypes = {
-  title: PropTypes.string.isRequired
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onKeyPress: PropTypes.func.isRequired
 };
 
 export default TimePicker;
