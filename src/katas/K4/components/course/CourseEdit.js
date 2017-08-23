@@ -5,6 +5,8 @@ import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
 import CourseForm from './CourseForm';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
+
 class CourseEdit extends React.Component {
   constructor(props) {
     super(props);
@@ -54,7 +56,7 @@ class CourseEdit extends React.Component {
     console.log("form submited, saving course");
   }
   render() {
-    //console.log("rendering form");
+    console.log("rendering form:" + JSON.stringify(this.state.course));
     return (
       <div style={{width:"80%", margin:"auto"}}>
         <CourseForm course={this.state.course} lecturerOptions={this.props.lecturers} onChange={this.handlerCourseChange} onSubmit={this.handlerCourseSubmit}/>
@@ -69,16 +71,20 @@ CourseEdit.propTypes = {
   lecturers: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   let course = {
     id: "",
     title: "",
     address: '',
     date: '',
     time: '',
-    lecturer: ''
+    lecturerId: ''
   };
   console.log(state.courseReducder);
+  let id = ownProps.match.params.id;
+  let index = _.findIndex(state.courseReducer, {'id':id});
+  course =  index >=0 ? Object.assign({}, state.courseReducer[index]) : course;
+  console.log(JSON.stringify(course));
   return {
     course: course,
     // the lecturers' structure loaded from api is different with the lecturers for dropdown list. so we need to map the data format below.
@@ -86,7 +92,7 @@ const mapStateToProps = (state) => {
       lecturer=>{
         return{
           value: lecturer.id,
-          name: lecturer.name
+          text: lecturer.name
         };
       })
   };

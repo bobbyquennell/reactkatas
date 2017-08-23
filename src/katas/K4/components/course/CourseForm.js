@@ -12,7 +12,7 @@ const CourseForm = ({course, lecturerOptions, onChange, onSubmit})=>{
     <form action="">
       <TextInput label="Course Name" name="title" value={course.title}
         placeHolder="Input Course Name" onChange={onChange}/>
-      <Select options={lecturerOptions} label="Lecturer Name" name="lecturer" defaultOption={{name:"Choose Lecturer", value:"haha"}} onChange={onChange} value={course.lecturer}/>
+      <Select options={lecturerOptions} label="Lecturer Name" name="lecturer" selectedValue={course.lecturerId} defaultOption={{text:"Choose Lecturer", value:""}} onChange={onChange} value={course.lecturer}/>
       <TextInput label="Address" value={course.address} name="address"
         placeHolder="Place of the course" onChange={onChange}/>
       <DatePicker label="Date" value={course.date} name="date" placeHolder="2017-08-23" onChange={onChange}/>

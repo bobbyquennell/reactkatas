@@ -9,15 +9,15 @@ let courses = [
     title: "Comtemporary English Writing",
     address: 'Main Building Room 401',
     date: '2017-08-01',
-    time: '2:00pm',
-    lecturer: 'Tommy Johnes'
+    time: '12:50',
+    lecturerId: '3'
   }, {
     id: "further-mathematics",
     title: "Further Mathematics",
     address: 'Main Building Room 402',
     date: '2017-08-02',
     time: '2:00pm',
-    lecturer: 'Tommy Johnes'
+    lecturerId: '1'
   }
 ];
 /* simulate api delay */
