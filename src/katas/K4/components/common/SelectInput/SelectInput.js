@@ -1,13 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './SelectInput.scss';
-const SelectInput = ({name, options, label, defaultOption, onChange})=>{
+const SelectInput = ({name, label, selectedValue, defaultOption, options, onChange})=>{
   return (
     <div>
       <label htmlFor={name} className={styles.title}>{label}</label>
-      <select className={styles.select} onChange={onChange} name={name}>
-        <option value={defaultOption.value}>{defaultOption.name}</option>
-        { options.map((item, i)=>{ return (<option key={i} value={item.name} className={styles.option}>{item.name}</option>); })}
+      {/* ----- note: remember that, instead of using the 'selected' attribute, React uses a 'value' attribute on the root select tag. This is more convenient in a controlled component because you only need to update it in one place.
+      see details at:  https://facebook.github.io/react/docs/forms.html#the-select-tag
+      */}
+      <select className={styles.select} onChange={onChange} name={name} value={selectedValue}>
+        <option value="">{defaultOption.text}</option>
+        {
+          options.map((item, i)=>
+          {
+            return (<option key={i} value={item.value}  className={styles.option}>{item.text}</option>);
+          })
+        }
       </select>
     </div>
   );
