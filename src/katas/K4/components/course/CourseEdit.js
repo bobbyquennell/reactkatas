@@ -70,7 +70,7 @@ const mapStateToProps = (state) => {
     title: "",
     address: '',
     date: '',
-    time: '01:02 PM',
+    time: '',
     lecturer: ''
   };
   console.log(state.courseReducder);
