@@ -20,3 +20,18 @@ export const loadCourses = () => {
 export const loadCoursesSuccess = (courses) => {
   return {type: types.LOAD_COURSES_SUCCESS, courses};
 };
+
+export const saveCourse = (course) => {
+  return function(dispatch) {
+    return api.saveCourse(course).then((id) => {
+      course.id = id;
+      dispatch(saveCourseSuccess(course));
+    }).catch((error) => {
+      throw(error);
+    });
+  };
+};
+
+export const saveCourseSuccess = (course) => {
+  return {type: types.SAVE_COURSE_SUCCESS, course};
+};

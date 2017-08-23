@@ -36,3 +36,24 @@ const delay = 2000;
 export const loadCourses = () => new Promise(resolve => setTimeout(() => {
   resolve(courses);
 }, delay));
+
+
+/*
+  // --- the  tidy and clean way to write a promise
+export const saveCourse = (course) => new Promise(resolve => setTimeout(() => {
+  resolve(course.title);
+}, delay));
+
+*/
+
+// --- the  more readable way to write a promise
+export  function saveCourse(course){
+  return new Promise((resolve, reject) => {
+      // the mock up of backend database operation
+    setTimeout(() => {
+      resolve(course.title);//use title as id, idealy, should use a plugin to beautify the id from title, something looks like: 'this-is-an-id-generated-by-title'
+    }, delay);
+    //  let error = new Error('out of power');
+    //  reject(error);
+  });
+}

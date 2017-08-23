@@ -7,7 +7,7 @@ import DatePicker from '../common/DatePicker/DatePicker';
 import TimePicker from '../common/TimePicker/TimePicker';
 import PropTypes from 'prop-types';
 
-const CourseForm = ({course, lecturerOptions, onChange})=>{
+const CourseForm = ({course, lecturerOptions, onChange, onSubmit})=>{
   return (
     <form action="">
       <TextInput label="Course Name" name="title" value={course.title}
@@ -17,14 +17,15 @@ const CourseForm = ({course, lecturerOptions, onChange})=>{
         placeHolder="Place of the course" onChange={onChange}/>
       <DatePicker label="Date" value={course.date} name="date" placeHolder="2017-08-23" onChange={onChange}/>
       <TimePicker label="Time" value={course.time} name="time" placeHolder="14:20" onChange={onChange}/>
-      <Button name="Submit"/>
+      <Button name="Submit" onClick={onSubmit}/>
     </form>
   );
 };
 CourseForm.propTypes = {
   course: PropTypes.object.isRequired,
   lecturerOptions: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired
 };
 
 export default CourseForm;

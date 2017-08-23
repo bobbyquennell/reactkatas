@@ -48,11 +48,16 @@ class CourseEdit extends React.Component {
 
     return this.setState({course:changedCourse});
   }
+  handlerCourseSubmit =(event)=>{
+    event.preventDefault();
+    this.props.actions.saveCourse(this.state.course);
+    console.log("form submited, saving course");
+  }
   render() {
     //console.log("rendering form");
     return (
       <div style={{width:"80%", margin:"auto"}}>
-        <CourseForm course={this.state.course} lecturerOptions={this.props.lecturers} onChange={this.handlerCourseChange}/>
+        <CourseForm course={this.state.course} lecturerOptions={this.props.lecturers} onChange={this.handlerCourseChange} onSubmit={this.handlerCourseSubmit}/>
       </div>
 
     );

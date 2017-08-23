@@ -11,6 +11,11 @@ export function courseReducer(state = [], action) {
     ];
   case types.LOAD_COURSES_SUCCESS:
     return action.courses;
+  case types.SAVE_COURSE_SUCCESS:
+    return [
+      ...state,
+      action.course
+    ];
   default:
     return state;
   }
