@@ -43,7 +43,7 @@ class CourseList extends Component {
     /* 3.1) using redux helper: bindActionCreators in mapDispatchToProps function */
     /* bind actions to props by using a redux helper: bindActionCreators*/
     api.loadCourses().then(result => {
-      console.log(result);
+      //console.log(result);
     }).catch(result => {
       console.log(result);
     });
@@ -59,9 +59,7 @@ class CourseList extends Component {
   // }
 
   render() {
-    console.log(this.props.courseList);
     return (
-
       <div>
         <h2>CourseList Page</h2>
         <form onSubmit={this.submitHandler}>
@@ -69,7 +67,7 @@ class CourseList extends Component {
           <button type="submit">Add Course</button>
         </form>
         <h4>course list:</h4>
-        <CourseTable courses={this.props.courseList}/> {/* {this.props.courseList.map(this.courseRow)} */}
+        <CourseTable courses={this.props.courseList} lecturers={this.props.lecturers}/> {/* {this.props.courseList.map(this.courseRow)} */}
       </div>
     );
   }
@@ -79,7 +77,10 @@ class CourseList extends Component {
 // using react-redux connect function to connect your component to the redux store
 //see: https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options
 function mapStateToProps(state) {
-  return {courseList: state.courseReducer};
+  return {
+    courseList: state.courseReducer,
+    lecturers: state.lecturerReducer
+  };
 }
 function mapDispatchToProps(dispatch) { // the function's name can be anything, does not have to be mapDispatchToProps
   return {
