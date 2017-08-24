@@ -50,6 +50,7 @@ class CourseEdit extends React.Component {
     event.preventDefault();
     this.state.course.id ? this.props.actions.updateCourse(this.state.course)
     :this.props.actions.createCourse(this.state.course);
+    this.context.router.history.push("/courses");
   }
   render() {
     return (
@@ -64,6 +65,10 @@ class CourseEdit extends React.Component {
 CourseEdit.propTypes = {
   course: PropTypes.object.isRequired,
   lecturers: PropTypes.arrayOf(PropTypes.object).isRequired
+};
+
+CourseEdit.contextTypes = {
+  router:PropTypes.object
 };
 
 const mapStateToProps = (state, ownProps) => {
