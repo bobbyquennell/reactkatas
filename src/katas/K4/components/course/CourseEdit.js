@@ -41,22 +41,16 @@ class CourseEdit extends React.Component {
   */
   handlerCourseChange = (event)=>{
     const field = event.target.name;
-    console.log(`event.tartget.name:${field}`);
-    console.log(`event.target.value: ${event.target.value}`);
     let changedCourse = Object.assign({}, this.state.course);
-    console.log(changedCourse);
     changedCourse[field] = event.target.value;
-    console.log(JSON.stringify(changedCourse));
 
     return this.setState({course:changedCourse});
   }
   handlerCourseSubmit =(event)=>{
     event.preventDefault();
     this.props.actions.saveCourse(this.state.course);
-    console.log("form submited, saving course");
   }
   render() {
-    console.log("rendering form:" + JSON.stringify(this.state.course));
     return (
       <div style={{width:"80%", margin:"auto"}}>
         <CourseForm course={this.state.course} lecturerOptions={this.props.lecturers} onChange={this.handlerCourseChange} onSubmit={this.handlerCourseSubmit}/>
@@ -80,11 +74,9 @@ const mapStateToProps = (state, ownProps) => {
     time: '',
     lecturerId: ''
   };
-  console.log(state.courseReducder);
   let id = ownProps.match.params.id;
   let index = _.findIndex(state.courseReducer, {'id':id});
   course =  index >=0 ? Object.assign({}, state.courseReducer[index]) : course;
-  console.log(JSON.stringify(course));
   return {
     course: course,
     // the lecturers' structure loaded from api is different with the lecturers for dropdown list. so we need to map the data format below.

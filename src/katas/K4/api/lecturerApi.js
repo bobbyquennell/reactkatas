@@ -31,6 +31,5 @@ const delay = 2000;
 // }
 
 export const loadLecturers = () => new Promise(resolve => setTimeout(() => {
-  console.log(lecturers);
   resolve(lecturers);
 }, delay));
