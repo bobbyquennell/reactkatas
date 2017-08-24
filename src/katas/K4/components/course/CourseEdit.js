@@ -48,7 +48,8 @@ class CourseEdit extends React.Component {
   }
   handlerCourseSubmit =(event)=>{
     event.preventDefault();
-    this.props.actions.saveCourse(this.state.course);
+    this.state.course.id ? this.props.actions.updateCourse(this.state.course)
+    :this.props.actions.createCourse(this.state.course);
   }
   render() {
     return (

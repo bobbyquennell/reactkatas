@@ -40,18 +40,31 @@ export const loadCourses = () => new Promise(resolve => setTimeout(() => {
 
 /*
   // --- the  tidy and clean way to write a promise
-export const saveCourse = (course) => new Promise(resolve => setTimeout(() => {
+export const createCourse = (course) => new Promise(resolve => setTimeout(() => {
   resolve(course.title);
 }, delay));
 
 */
 
 // --- the  more readable way to write a promise
-export  function saveCourse(course){
+export  function createCourse(course){
   return new Promise((resolve, reject) => {
       // the mock up of backend database operation
     setTimeout(() => {
-      resolve(course.title);//use title as id, idealy, should use a plugin to beautify the id from title, something looks like: 'this-is-an-id-generated-by-title'
+      //generate id for a new course
+      const newId = course.title.replace(/\s+/g, '-').toLowerCase();
+      course.id = newId;
+      resolve(course.id);
+    }, delay);
+    //  let error = new Error('out of power');
+    //  reject(error);
+  });
+}
+
+export  function updateCourse(course){
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(course);
     }, delay);
     //  let error = new Error('out of power');
     //  reject(error);

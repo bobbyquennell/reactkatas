@@ -3,9 +3,9 @@
 
 import * as types from './actionTypes';
 import * as api from '../api/courseApi';
-export function createCourse(course) {
-  return {type: types.CREATE_COURSE, course};
-}
+// export function createCourse(course) {
+//   return {type: types.CREATE_COURSE, course};
+// }
 
 export const loadCourses = () => {
   return function(dispatch) {
@@ -21,17 +21,31 @@ export const loadCoursesSuccess = (courses) => {
   return {type: types.LOAD_COURSES_SUCCESS, courses};
 };
 
-export const saveCourse = (course) => {
+export const createCourse = (course) => {
   return function(dispatch) {
-    return api.saveCourse(course).then((id) => {
+    return api.createCourse(course).then((id) => {
       course.id = id;
-      dispatch(saveCourseSuccess(course));
+      dispatch(createCourseSuccess(course));
     }).catch((error) => {
       throw(error);
     });
   };
 };
 
-export const saveCourseSuccess = (course) => {
-  return {type: types.SAVE_COURSE_SUCCESS, course};
+export const createCourseSuccess = (course) => {
+  return {type: types.CREATE_COURSE_SUCCESS, course};
+};
+
+export const updateCourse = (course) => {
+  return function(dispatch) {
+    return api.updateCourse(course).then((course) => {
+      dispatch(updateCourseSuccess(course));
+    }).catch((error) => {
+      throw(error);
+    });
+  };
+};
+
+export const updateCourseSuccess = (course) => {
+  return {type: types.UPDATE_COURSE_SUCCESS, course};
 };

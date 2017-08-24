@@ -11,10 +11,15 @@ export function courseReducer(state = [], action) {
     ];
   case types.LOAD_COURSES_SUCCESS:
     return action.courses;
-  case types.SAVE_COURSE_SUCCESS:
+  case types.CREATE_COURSE_SUCCESS:
     return [
       ...state,
       action.course
+    ];
+  case types.UPDATE_COURSE_SUCCESS:
+    return [
+      ...state.filter(item=>item.id !== action.course.id),
+      Object.assign({}, action.course)
     ];
   default:
     return state;
