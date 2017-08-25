@@ -32,7 +32,7 @@ class CourseEdit extends React.Component {
 
 
   componentWillReceiveProps(nextProps){
-    if(nextProps.course !== this.props.course){
+    if(nextProps.course.id !== this.props.course.id){
       this.setState(prevState=>({
         course: Object.assign({}, nextProps.course)
       }));//--------why we need the parentheses to wrap the curly braces?
@@ -40,7 +40,7 @@ class CourseEdit extends React.Component {
       // further reading via below links on "Returning object literals" secssion: https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions
     }
   }
-  
+
   //we are using the 'controlled component' method to handle the form  elements in React
   // see more details for 'controlled component' at :https://facebook.github.io/react/docs/forms.html
   // 'uncontrolled component':https://facebook.github.io/react/docs/uncontrolled-components.html

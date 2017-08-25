@@ -5,12 +5,15 @@ import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
 import * as api from '../../api/courseApi';
 import CourseTable from './CourseTable';
+import Button from '../common/Button/Button';
+import {Redirect} from 'react-router-dom';
 
 class CourseList extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
+      redirect: false,
       courseName: ""
       // courseList:[]
     };
@@ -58,15 +61,17 @@ class CourseList extends Component {
   //     return <div key={index}>{course.title}</div>;
   // }
 
+  handlerCreateCourseClick = ()=>{
+    this.setState({
+      redirect:true
+    });
+  }
   render() {
     return (
+      (this.state.redirect)?
+      <Redirect to="/course" /> :
       <div>
-        <h2>CourseList Page</h2>
-        <form onSubmit={this.submitHandler}>
-          <input type="text" placeholder="course name" value={this.state.courseName} onChange={this.onChangeHandler} required/>
-          <button type="submit">Add Course</button>
-        </form>
-        <h4>course list:</h4>
+        <Button  name="Create Course" onClick={this.handlerCreateCourseClick}/>
         <CourseTable courses={this.props.courseList} lecturers={this.props.lecturers}/> {/* {this.props.courseList.map(this.courseRow)} */}
       </div>
     );
