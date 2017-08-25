@@ -53,6 +53,7 @@ export  function createCourse(course){
     setTimeout(() => {
       //generate id for a new course
       const newId = course.title.replace(/\s+/g, '-').toLowerCase();
+      //https://stackoverflow.com/questions/1983648/replace-space-with-dash-and-make-all-letters-lower-case-using-javascript
       course.id = newId;
       resolve(course.id);
     }, delay);

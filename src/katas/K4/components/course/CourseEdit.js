@@ -30,6 +30,17 @@ class CourseEdit extends React.Component {
   //for more details, see: https://flow.org/en/docs/types/classes/
   */
 
+
+  componentWillReceiveProps(nextProps){
+    if(nextProps.course !== this.props.course){
+      this.setState(prevState=>({
+        course: Object.assign({}, nextProps.course)
+      }));//--------why we need the parentheses to wrap the curly braces?
+      // to return object literals in Fat Arrow Function, we need to do this, otherwise you need to use return keyword explicitly.
+      // further reading via below links on "Returning object literals" secssion: https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+    }
+  }
+  
   //we are using the 'controlled component' method to handle the form  elements in React
   // see more details for 'controlled component' at :https://facebook.github.io/react/docs/forms.html
   // 'uncontrolled component':https://facebook.github.io/react/docs/uncontrolled-components.html
@@ -52,6 +63,7 @@ class CourseEdit extends React.Component {
     :this.props.actions.createCourse(this.state.course);
     this.context.router.history.push("/courses");
   }
+
   render() {
     return (
       <div style={{width:"80%", margin:"auto"}}>
