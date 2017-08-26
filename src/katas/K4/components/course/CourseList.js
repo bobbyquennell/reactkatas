@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
 import * as api from '../../api/courseApi';
 import CourseTable from './CourseTable';
+import LoadingDots from '../common/LoadingDots/LoadingDots';
 import Button from '../common/Button/Button';
 import {Redirect} from 'react-router-dom';
 
@@ -67,9 +68,12 @@ class CourseList extends Component {
     });
   }
   render() {
+    console.log(`asyncInProgress: ${this.props.asyncInProgress}`);
     return (
       (this.state.redirect)?
       <Redirect to="/course" /> :
+      (this.props.asyncInProgress > 0) ?
+      <LoadingDots /> :
       <div>
         <Button  name="Create Course" onClick={this.handlerCreateCourseClick}/>
         <CourseTable courses={this.props.courseList} lecturers={this.props.lecturers}/> {/* {this.props.courseList.map(this.courseRow)} */}
@@ -84,7 +88,8 @@ class CourseList extends Component {
 function mapStateToProps(state) {
   return {
     courseList: state.courseReducer,
-    lecturers: state.lecturerReducer
+    lecturers: state.lecturerReducer,
+    asyncInProgress: state.asyncStatusReducer
   };
 }
 function mapDispatchToProps(dispatch) { // the function's name can be anything, does not have to be mapDispatchToProps

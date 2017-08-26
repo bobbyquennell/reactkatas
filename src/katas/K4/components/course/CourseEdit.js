@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
 import CourseForm from './CourseForm';
+import LoadingDots from '../common/LoadingDots/LoadingDots';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
@@ -66,6 +67,7 @@ class CourseEdit extends React.Component {
 
   render() {
     return (
+      this.props.asyncInProgress > 0 ? <LoadingDots /> :
       <div style={{width:"80%", margin:"auto"}}>
         <CourseForm course={this.state.course} lecturerOptions={this.props.lecturers} onChange={this.handlerCourseChange} onSubmit={this.handlerCourseSubmit}/>
       </div>
@@ -104,7 +106,8 @@ const mapStateToProps = (state, ownProps) => {
           value: lecturer.id,
           text: lecturer.name
         };
-      })
+      }),
+    asyncInProgress: state.asyncStatusReducer
   };
 };
 

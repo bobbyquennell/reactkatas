@@ -4,8 +4,10 @@
 import { combineReducers } from 'redux';
 import { courseReducer } from './courseReducer';
 import { lecturerReducer } from './lecturerReducer';
+import { asyncStatusReducer } from './asyncStatusReducer';
 
 export default  combineReducers({
   courseReducer,
-  lecturerReducer
+  lecturerReducer,
+  asyncStatusReducer
 });

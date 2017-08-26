@@ -3,14 +3,18 @@
 
 import * as types from './actionTypes';
 import * as api from '../api/courseApi';
+import { asyncStart, asyncComplete } from './asyncActions';
 // export function createCourse(course) {
 //   return {type: types.CREATE_COURSE, course};
 // }
 
 export const loadCourses = () => {
   return function(dispatch) {
+    dispatch(asyncStart());
     return api.loadCourses().then((courses) => {
+      dispatch(asyncComplete());
       dispatch(loadCoursesSuccess(courses));
+
     }).catch((error) => {
       throw(error);
     });
