@@ -27,8 +27,10 @@ export const loadCoursesSuccess = (courses) => {
 
 export const createCourse = (course) => {
   return function(dispatch) {
+    dispatch(asyncStart());
     return api.createCourse(course).then((id) => {
       course.id = id;
+      dispatch(asyncComplete());
       dispatch(createCourseSuccess(course));
     }).catch((error) => {
       throw(error);
@@ -42,7 +44,9 @@ export const createCourseSuccess = (course) => {
 
 export const updateCourse = (course) => {
   return function(dispatch) {
+    dispatch(asyncStart());
     return api.updateCourse(course).then((course) => {
+      dispatch(asyncComplete());
       dispatch(updateCourseSuccess(course));
     }).catch((error) => {
       throw(error);

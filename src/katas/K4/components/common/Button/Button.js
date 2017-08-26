@@ -3,9 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Button.scss';
 
-const Button = ({name, onClick})=>{
+const Button = ({name, onClick, disabled})=>{
   return(
-    <button className={styles.root} onClick={onClick}>{name}</button>
+    <button className={styles.root} onClick={onClick} disabled={disabled}>{name}</button>
   );
 };
 

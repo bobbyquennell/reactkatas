@@ -72,9 +72,10 @@ class CourseEdit extends React.Component {
 
   render() {
     return (
-      this.props.asyncInProgress > 0 ? <LoadingDots /> :
+      
       <div style={{width:"80%", margin:"auto"}}>
-        <CourseForm course={this.state.course} lecturerOptions={this.props.lecturers} onChange={this.handlerCourseChange} onSubmit={this.handlerCourseSubmit}/>
+        <CourseForm course={this.state.course} lecturerOptions={this.props.lecturers} onChange={this.handlerCourseChange} onSubmit={this.handlerCourseSubmit}
+        asyncStatus={this.props.asyncInProgress}/>
       </div>
 
     );
