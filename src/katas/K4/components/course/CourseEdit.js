@@ -60,9 +60,14 @@ class CourseEdit extends React.Component {
   }
   handlerCourseSubmit =(event)=>{
     event.preventDefault();
-    this.state.course.id ? this.props.actions.updateCourse(this.state.course)
-    :this.props.actions.createCourse(this.state.course);
-    this.context.router.history.push("/courses");
+    this.state.course.id ? this.props.actions.updateCourse(this.state.course).then(()=>{
+      this.context.router.history.push("/courses");
+    })
+    :this.props.actions.createCourse(this.state.course).then(()=>{
+      this.context.router.history.push("/courses");
+    });//using thunk, we can chain Promises as long as we return them.
+    // see details at: https://github.com/gaearon/redux-thunk
+
   }
 
   render() {
