@@ -17,7 +17,7 @@ const CourseForm = ({course, lecturerOptions, onChange, onSubmit, asyncStatus})=
         placeHolder="Place of the course" onChange={onChange}/>
       <DatePicker label="Date" value={course.date} name="date" placeHolder="2017-08-23" onChange={onChange}/>
       <TimePicker label="Time" value={course.time} name="time" placeHolder="14:20" onChange={onChange}/>
-      <Button name="Submit" onClick={onSubmit} disabled={asyncStatus>0}/>
+      <Button name={asyncStatus>0? "Submiting ..." : "Submit"} onClick={onSubmit} disabled={asyncStatus>0}/>
     </form>
   );
 };
