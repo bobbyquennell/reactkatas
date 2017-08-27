@@ -19,7 +19,8 @@ class CourseEdit extends React.Component {
       //should we put the local course state in Redux store?
       //see https://goshakkk.name/should-i-put-form-state-into-redux/
       // however, if we use redux-form, it is another story. TO-DO: learn redux-form later
-      course: Object.assign({}, this.props.course)
+      course: Object.assign({}, this.props.course),
+      submiting: false
     };
   }
   state:Object;//make flow happy way 1): https://github.com/facebook/flow/issues/1594
@@ -60,11 +61,14 @@ class CourseEdit extends React.Component {
   }
   handlerCourseSubmit =(event)=>{
     event.preventDefault();
+    this.setState({submiting:true});
     this.state.course.id ? this.props.actions.updateCourse(this.state.course).then(()=>{
+      //this.setState({submiting:false});
       this.context.router.history.push("/courses");
     })
     :this.props.actions.createCourse(this.state.course).then(()=>{
-      this.context.router.history.push("/courses");
+      this.setState({submiting:false});
+      //this.context.router.history.push("/courses");
     });//using thunk, we can chain Promises as long as we return them.
     // see details at: https://github.com/gaearon/redux-thunk
 
@@ -72,10 +76,10 @@ class CourseEdit extends React.Component {
 
   render() {
     return (
-      
+
       <div style={{width:"80%", margin:"auto"}}>
         <CourseForm course={this.state.course} lecturerOptions={this.props.lecturers} onChange={this.handlerCourseChange} onSubmit={this.handlerCourseSubmit}
-        asyncStatus={this.props.asyncInProgress}/>
+        submiting={this.state.submiting}/>
       </div>
 
     );
@@ -113,7 +117,6 @@ const mapStateToProps = (state, ownProps) => {
           text: lecturer.name
         };
       }),
-    asyncInProgress: state.asyncStatusReducer
   };
 };
 
