@@ -11,3 +11,9 @@ export const asyncStart = function(){
     type: types.ASYNC_START
   };
 };
+
+export const asyncFail = function(){
+  return {
+    type: types.ASYNC_FAIL
+  };
+};

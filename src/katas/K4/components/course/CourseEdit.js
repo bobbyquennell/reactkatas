@@ -20,6 +20,8 @@ class CourseEdit extends React.Component {
       //see https://goshakkk.name/should-i-put-form-state-into-redux/
       // however, if we use redux-form, it is another story. TO-DO: learn redux-form later
       course: Object.assign({}, this.props.course),
+      //when to use local state in Redux project?
+      //Answer: If it's a fleeting data that the rest of the components will not care about. use local state
       submiting: false
     };
   }
@@ -63,13 +65,18 @@ class CourseEdit extends React.Component {
     event.preventDefault();
     this.setState({submiting:true});
     this.state.course.id ? this.props.actions.updateCourse(this.state.course).then(()=>{
-      //this.setState({submiting:false});
+      this.setState({submiting:false});
       this.context.router.history.push("/courses");
-    })
+    }).catch(error=>{alert(error);this.setState({submiting:false});})
     :this.props.actions.createCourse(this.state.course).then(()=>{
       this.setState({submiting:false});
-      //this.context.router.history.push("/courses");
-    });//using thunk, we can chain Promises as long as we return them.
+      this.context.router.history.push("/courses");
+    }).catch(error=>
+    {
+      alert(error);
+      this.setState({submiting:false});
+    });
+    //using thunk, we can chain Promises as long as we return them.
     // see details at: https://github.com/gaearon/redux-thunk
 
   }

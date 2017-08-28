@@ -51,6 +51,10 @@ export  function createCourse(course){
   return new Promise((resolve, reject) => {
       // the mock up of backend database operation
     setTimeout(() => {
+      //mock up server side validation:
+       if(course.title.length < 5){
+         reject(new Error('title length should be more than 5 charachters !'));
+       }
       //generate id for a new course
       const newId = course.title.replace(/\s+/g, '-').toLowerCase();
       //https://stackoverflow.com/questions/1983648/replace-space-with-dash-and-make-all-letters-lower-case-using-javascript
@@ -65,6 +69,10 @@ export  function createCourse(course){
 export  function updateCourse(course){
   return new Promise((resolve, reject) => {
     setTimeout(() => {
+      //mock up server side validation:
+      if(course.title.length < 5){
+        reject(new Error('title length should be more than 5 charachters !'));
+      }
       resolve(course);
     }, delay);
     //  let error = new Error('out of power');

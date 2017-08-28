@@ -3,7 +3,7 @@
 
 import * as types from './actionTypes';
 import * as api from '../api/courseApi';
-import { asyncStart, asyncComplete } from './asyncActions';
+import { asyncStart, asyncComplete, asyncFail } from './asyncActions';
 // export function createCourse(course) {
 //   return {type: types.CREATE_COURSE, course};
 // }
@@ -16,6 +16,7 @@ export const loadCourses = () => {
       dispatch(loadCoursesSuccess(courses));
 
     }).catch((error) => {
+      dispatch(asyncFail());
       throw(error);
     });
   };
@@ -33,6 +34,7 @@ export const createCourse = (course) => {
       dispatch(asyncComplete());
       dispatch(createCourseSuccess(course));
     }).catch((error) => {
+      dispatch(asyncFail());
       throw(error);
     });
   };
@@ -49,6 +51,7 @@ export const updateCourse = (course) => {
       dispatch(asyncComplete());
       dispatch(updateCourseSuccess(course));
     }).catch((error) => {
+      dispatch(asyncFail());
       throw(error);
     });
   };
