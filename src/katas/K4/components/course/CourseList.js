@@ -9,7 +9,7 @@ import LoadingDots from '../common/LoadingDots/LoadingDots';
 import Button from '../common/Button/Button';
 import {Redirect} from 'react-router-dom';
 
-class CourseList extends Component {
+export class CourseList extends Component {
 
   constructor(props) {
     super(props);
@@ -68,7 +68,7 @@ class CourseList extends Component {
     });
   }
   render() {
-    console.log(`asyncInProgress: ${this.props.asyncInProgress}`);
+    //console.log(`asyncInProgress: ${this.props.asyncInProgress}`);
     return (
       (this.state.redirect)?
       <Redirect to="/course" /> :

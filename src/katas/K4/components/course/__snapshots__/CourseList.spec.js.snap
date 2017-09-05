@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CourseList should render correctly 1`] = `
+<div>
+  <Button
+    name="Create Course"
+    onClick={[Function]}
+  />
+  <CourseTable
+    courses={Array []}
+    lecturers={Array []}
+  />
+   
+</div>
+`;

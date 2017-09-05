@@ -5,9 +5,14 @@ import { CourseList } from './CourseList';
 
 describe('CourseList', ()=>{
   it('should render correctly', ()=>{
+    const props = {
+      courseList: [],
+      lecturers:[],
+      asyncInProgress: 0
+    };
     const wrapper = shallow(
-      <CourseList />
-    ).toJSON();
+      <CourseList {...props}/>
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
