@@ -1,15 +1,167 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CourseList should render correctly 1`] = `
+exports[`CourseList: When async operation is running should render loading dots 1`] = `
 <div>
-  <Button
-    name="Create Course"
+  <button
+    className={undefined}
+    disabled={undefined}
     onClick={[Function]}
-  />
-  <CourseTable
-    courses={Array []}
-    lecturers={Array []}
-  />
+  >
+    Create Course
+  </button>
+  <table
+    style={
+      Object {
+        "margin": "20px auto",
+        "maxWidth": "90%",
+      }
+    }
+  >
+    <tbody>
+      <tr>
+        <th
+          style={
+            Object {
+              "textAlign": "center",
+              "width": "20%",
+            }
+          }
+        >
+          Title
+        </th>
+        <th
+          style={
+            Object {
+              "textAlign": "center",
+              "width": "20%",
+            }
+          }
+        >
+          Lecturer
+        </th>
+        <th
+          style={
+            Object {
+              "textAlign": "center",
+              "width": "20%",
+            }
+          }
+        >
+          Address
+        </th>
+        <th
+          style={
+            Object {
+              "textAlign": "center",
+              "width": "20%",
+            }
+          }
+        >
+          Date
+        </th>
+        <th
+          style={
+            Object {
+              "textAlign": "center",
+              "width": "20%",
+            }
+          }
+        >
+          Time
+        </th>
+      </tr>
+    </tbody>
+  </table>
    
 </div>
+`;
+
+exports[`CourseList: When async operation is running should render loading dots 2`] = `
+<CourseList
+  asyncInProgress={0}
+  courseList={Array []}
+  lecturers={Array []}
+>
+  <div>
+    <Button
+      name="Create Course"
+      onClick={[Function]}
+    >
+      <button
+        onClick={[Function]}
+      >
+        Create Course
+      </button>
+    </Button>
+    <CourseTable
+      courses={Array []}
+      lecturers={Array []}
+    >
+      <table
+        style={
+          Object {
+            "margin": "20px auto",
+            "maxWidth": "90%",
+          }
+        }
+      >
+        <tbody>
+          <tr>
+            <th
+              style={
+                Object {
+                  "textAlign": "center",
+                  "width": "20%",
+                }
+              }
+            >
+              Title
+            </th>
+            <th
+              style={
+                Object {
+                  "textAlign": "center",
+                  "width": "20%",
+                }
+              }
+            >
+              Lecturer
+            </th>
+            <th
+              style={
+                Object {
+                  "textAlign": "center",
+                  "width": "20%",
+                }
+              }
+            >
+              Address
+            </th>
+            <th
+              style={
+                Object {
+                  "textAlign": "center",
+                  "width": "20%",
+                }
+              }
+            >
+              Date
+            </th>
+            <th
+              style={
+                Object {
+                  "textAlign": "center",
+                  "width": "20%",
+                }
+              }
+            >
+              Time
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </CourseTable>
+     
+  </div>
+</CourseList>
 `;
