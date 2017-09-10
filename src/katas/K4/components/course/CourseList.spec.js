@@ -12,15 +12,20 @@ describe('CourseList:', ()=>{
         lecturers:[],
         asyncInProgress: 0
       };
+
+      /* snappshot test option 1: Jest +  enzyme and enzyme-to-json */
       const wrapper = mount(
         <CourseList {...props}/>
       );
-      const wrapper2 = renderer.create(
-        <CourseList {...props}/>
-      ).toJSON();
-
-      expect(wrapper2).toMatchSnapshot();
       expect(toJson(wrapper)).toMatchSnapshot();
+
+      /* snappshot test option 2: Jest + react-test-renderer */
+      // const wrapper2 = renderer.create(
+      //   <CourseList {...props}/>
+      // ).toJSON();
+      //
+      // expect(wrapper2).toMatchSnapshot();
+
     });
   });
 
