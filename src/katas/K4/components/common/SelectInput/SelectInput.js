@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styles from './SelectInput.scss';
 const SelectInput = ({name, label, selectedValue, defaultOption, options, onChange})=>{
   return (
-    <div>
-      <label htmlFor={name} className={styles.title}>{label}</label>
+    <div className={styles.root}>
+      <label htmlFor={name} className={styles.label}>{label}</label>
       {/* ----- note: remember that, instead of using the 'selected' attribute, React uses a 'value' attribute on the root select tag. This is more convenient in a controlled component because you only need to update it in one place.
       see details at:  https://facebook.github.io/react/docs/forms.html#the-select-tag
       */}

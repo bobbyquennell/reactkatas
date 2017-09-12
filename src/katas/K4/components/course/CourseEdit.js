@@ -8,7 +8,7 @@ import LoadingDots from '../common/LoadingDots/LoadingDots';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
-class CourseEdit extends React.Component {
+export class CourseEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +22,8 @@ class CourseEdit extends React.Component {
       course: Object.assign({}, this.props.course),
       //when to use local state in Redux project?
       //Answer: If it's a fleeting data that the rest of the components will not care about. use local state
-      submiting: false
+      submiting: false,
+      errors: {}
     };
   }
   state:Object;//make flow happy way 1): https://github.com/facebook/flow/issues/1594
@@ -63,6 +64,9 @@ class CourseEdit extends React.Component {
   }
   handlerCourseSubmit =(event)=>{
     event.preventDefault();
+    if(!this.isFormValid()){
+      return;
+    }
     this.setState({submiting:true});
     this.state.course.id ? this.props.actions.updateCourse(this.state.course).then(()=>{
       this.setState({submiting:false});
@@ -73,20 +77,31 @@ class CourseEdit extends React.Component {
       this.context.router.history.push("/courses");
     }).catch(error=>
     {
-      alert(error);
+      // alert(error); server side error
       this.setState({submiting:false});
     });
     //using thunk, we can chain Promises as long as we return them.
     // see details at: https://github.com/gaearon/redux-thunk
 
   }
+  isFormValid = ()=>{
+    if(this.state.course.title.length > 5)
+      return true;
+    else {
+      const errors = {
+        title:"title must be longer than 5 charactors"
+      };
+      this.setState({errors: errors});
+      return false;
+    }
 
+  }
   render() {
     return (
 
       <div style={{width:"80%", margin:"auto"}}>
         <CourseForm course={this.state.course} lecturerOptions={this.props.lecturers} onChange={this.handlerCourseChange} onSubmit={this.handlerCourseSubmit}
-        submiting={this.state.submiting}/>
+        submiting={this.state.submiting} errors={this.state.errors}/>
       </div>
 
     );
