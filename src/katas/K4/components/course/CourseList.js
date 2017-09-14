@@ -8,6 +8,7 @@ import CourseTable from './CourseTable';
 import LoadingDots from '../common/LoadingDots/LoadingDots';
 import Button from '../common/Button/Button';
 import {Redirect} from 'react-router-dom';
+import styles from './CourseList.scss';
 
 export class CourseList extends Component {
 
@@ -75,7 +76,7 @@ export class CourseList extends Component {
       (this.props.asyncInProgress > 0) ?
       <LoadingDots /> :
       <div>
-        <Button  name="Create Course" onClick={this.handlerCreateCourseClick}/>
+        <Button className={styles.courseButton} name="Create Course" onClick={this.handlerCreateCourseClick}/>
         <CourseTable courses={this.props.courseList} lecturers={this.props.lecturers}/> {/* {this.props.courseList.map(this.courseRow)} */}
       </div>
     );
