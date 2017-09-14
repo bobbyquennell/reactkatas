@@ -12,6 +12,7 @@ exports[`CourseList: When async operation is running should render loading dots 
       onClick={[Function]}
     >
       <button
+        className=""
         onClick={[Function]}
       >
         Create Course
