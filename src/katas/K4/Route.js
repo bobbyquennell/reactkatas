@@ -11,7 +11,7 @@ import {loadLecturers} from './actions/LecturerActions';
 import CourseEdit from './components/course/CourseEdit';
 import {Provider} from 'react-redux';
 import generateStore from './generateStore';
-
+import './_theme.scss';
 
 let K4store = generateStore();
 K4store.dispatch(loadCourses());

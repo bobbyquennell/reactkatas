@@ -2,13 +2,21 @@
 @import "./components/colors";
 @import "./components/mixins";
 
-* {
+:global {
+  *,
+  *::before,
+  *::after {
+    font-family: $prefered-font;
+    font-size: $font-size-normal;
+    font-weight: $font-weight-normal;
+  }
+}
+
+
+body {
   font-family: $prefered-font;
   font-size: $font-size-normal;
   font-weight: $font-weight-normal;
-}
-
-body {
   margin: 20px auto;
   max-width: 960px;
   width: 90%;
