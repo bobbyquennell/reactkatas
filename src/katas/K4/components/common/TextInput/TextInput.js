@@ -9,9 +9,9 @@ const TextInput = function({ id, label, value, name, placeHolder, onChange, mess
       <label className={styles.label} htmlFor={name}>{label}</label>
       <input className={styles.input} type="text" value={value} name={name}
         placeholder={placeHolder} onChange={onChange} id={id}/>
-        <div className={styles.invalid}>
-          <span>{(!valid)&&message !== null || undefined ? `invalid: ${message}` : null }</span>
-        </div>
+      <div className={styles.invalid}>
+        <span>{((!valid)&& message !== null) || undefined ? `invalid: ${message}` : null }</span>
+      </div>
     </div>
 
   );

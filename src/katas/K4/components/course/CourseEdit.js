@@ -72,14 +72,14 @@ export class CourseEdit extends React.Component {
       this.setState({submiting:false});
       this.context.router.history.push("/courses");
     }).catch(error=>{alert(error);this.setState({submiting:false});})
-    :this.props.actions.createCourse(this.state.course).then(()=>{
-      this.setState({submiting:false});
-      this.context.router.history.push("/courses");
-    }).catch(error=>
-    {
-      // alert(error); server side error
-      this.setState({submiting:false});
-    });
+      :this.props.actions.createCourse(this.state.course).then(()=>{
+        this.setState({submiting:false});
+        this.context.router.history.push("/courses");
+      }).catch(error=>
+      {
+        // alert(error); server side error
+        this.setState({submiting:false});
+      });
     //using thunk, we can chain Promises as long as we return them.
     // see details at: https://github.com/gaearon/redux-thunk
 
@@ -101,7 +101,7 @@ export class CourseEdit extends React.Component {
 
       <div style={{width:"80%", margin:"auto"}}>
         <CourseForm course={this.state.course} lecturerOptions={this.props.lecturers} onChange={this.handlerCourseChange} onSubmit={this.handlerCourseSubmit}
-        submiting={this.state.submiting} errors={this.state.errors}/>
+          submiting={this.state.submiting} errors={this.state.errors}/>
       </div>
 
     );

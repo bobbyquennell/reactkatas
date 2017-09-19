@@ -49,12 +49,12 @@ export const createCourse = (course) => new Promise(resolve => setTimeout(() => 
 // --- the  more readable way to write a promise
 export  function createCourse(course){
   return new Promise((resolve, reject) => {
-      // the mock up of backend database operation
+    // the mock up of backend database operation
     setTimeout(() => {
       //mock up server side validation:
-       if(course.title.length < 5){
-         reject(new Error('title length should be more than 5 charachters !'));
-       }
+      if(course.title.length < 5){
+        reject(new Error('title length should be more than 5 charachters !'));
+      }
       //generate id for a new course
       const newId = course.title.replace(/\s+/g, '-').toLowerCase();
       //https://stackoverflow.com/questions/1983648/replace-space-with-dash-and-make-all-letters-lower-case-using-javascript

@@ -72,13 +72,13 @@ export class CourseList extends Component {
     //console.log(`asyncInProgress: ${this.props.asyncInProgress}`);
     return (
       (this.state.redirect)?
-      <Redirect to="/course" /> :
-      (this.props.asyncInProgress > 0) ?
-      <LoadingDots /> :
-      <div>
-        <Button className={styles.courseButton} name="Create Course" onClick={this.handlerCreateCourseClick}/>
-        <CourseTable courses={this.props.courseList} lecturers={this.props.lecturers}/> {/* {this.props.courseList.map(this.courseRow)} */}
-      </div>
+        <Redirect to="/course" /> :
+        (this.props.asyncInProgress > 0) ?
+          <LoadingDots /> :
+          <div>
+            <Button className={styles.courseButton} name="Create Course" onClick={this.handlerCreateCourseClick}/>
+            <CourseTable courses={this.props.courseList} lecturers={this.props.lecturers}/> {/* {this.props.courseList.map(this.courseRow)} */}
+          </div>
     );
   }
 

@@ -18,7 +18,7 @@ const CourseForm = ({course, lecturerOptions, onChange, onSubmit, submiting, err
         placeHolder="Place of the course" onChange={onChange} message={errors.address} valid={!(errors.address && errors.address.length <= 0)}/>
       <DatePicker label="Date" value={course.date} name="date" placeHolder="2017-08-23" onChange={onChange}/>
       <TimePicker label="Time" value={course.time} name="time" placeHolder="14:20" onChange={onChange}/>
-      <Button name={submiting == true ? "Submiting ..." : "Submit"} onClick={onSubmit} disabled={submiting}/>
+      <Button name={submiting === true ? "Submiting ..." : "Submit"} onClick={onSubmit} disabled={submiting}/>
     </form>
   );
 };

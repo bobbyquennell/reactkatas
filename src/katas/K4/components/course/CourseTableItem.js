@@ -11,7 +11,7 @@ const CourseTableItem = ({
   time,
   lecturers
 }) => {
-  const index = _.findIndex(lecturers, (lecturer)=>{ return lecturer.id == lecturerId; });
+  const index = _.findIndex(lecturers, (lecturer)=>{ return lecturer.id === lecturerId; });
   const lecturerName =  index >=0 ? lecturers[index].name : "";
   return (
     <tr style={Style.tr}>

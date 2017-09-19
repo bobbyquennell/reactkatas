@@ -6,9 +6,10 @@ const TimePicker = function({ label, name, value, placeHolder, onChange }){
   return (
     <div>
       <label className={styles.title} htmlFor={name}>{label}</label>
-      <input className={styles.root} name={name} type="text" value={value}
-      placeholder={placeHolder}
-       onChange={onChange}/>
+      <input className={styles.root} name={name}
+        type="text" value={value}
+        placeholder={placeHolder}
+        onChange={onChange}/>
     </div>
 
   );
