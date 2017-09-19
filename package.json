@@ -57,11 +57,13 @@
     "lint": "node_modules/.bin/esw webpack.config.* src tools",
     "lint:watch": "npm run lint -- --watch",
     "build": "node scripts/build.js",
-    "test": "jest"
+    "test": "jest",
+    "postbuild": "node scripts/prodServer.js"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-preset-flow": "^6.23.0",
+    "clean-webpack-plugin": "^0.1.16",
     "enzyme": "^2.9.1",
     "enzyme-to-json": "^1.5.1",
     "eslint-watch": "^3.1.2",

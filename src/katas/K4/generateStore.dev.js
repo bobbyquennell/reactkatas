@@ -2,8 +2,10 @@
 
 import {createStore, applyMiddleware, compose} from 'redux';
 import rootReducer from './reducers/rootReducer';
+import immutableStateInvariantMiddleware from 'redux-immutable-state-invariant';
 import thunk from 'redux-thunk';
 //initialState is convenient for server side rendering.
 export default function generateStore(initialState) {
-  return createStore(rootReducer, initialState, applyMiddleware(thunk));
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; //https://github.com/zalmoxisus/redux-devtools-extension
+  return createStore(rootReducer, initialState, composeEnhancers(applyMiddleware(thunk, immutableStateInvariantMiddleware())));
 }

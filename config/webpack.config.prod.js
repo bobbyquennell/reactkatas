@@ -12,6 +12,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -45,6 +46,18 @@ const extractTextPluginOptions = shouldUseRelativeAssetPaths
   ? // Making sure that the publicPath goes back to to build folder.
     { publicPath: Array(cssFilename.split('/').length).join('../') }
   : {};
+// the path(s) that should be cleaned
+const pathsToClean = [
+  'dist',
+  'build'
+];
+// the clean options to use
+let cleanOptions = {
+  // root:     '/full/webpack/root/path',
+  // exclude:  ['shared.js'],
+  // verbose:  true,
+  // dry:      false
+};
 
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
@@ -73,6 +86,9 @@ module.exports = {
         .relative(paths.appSrc, info.absoluteResourcePath)
         .replace(/\\/g, '/'),
   },
+  devServer: {
+    contentBase: './build'
+  },
   resolve: {
     // This allows you to set a fallback for where Webpack should look for modules.
     // We placed these paths second because we want `node_modules` to "win"
@@ -90,7 +106,7 @@ module.exports = {
     // for React Native Web.
     extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx'],
     alias: {
-      
+
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
@@ -102,6 +118,7 @@ module.exports = {
       // please link the files into your node_modules/ and let module-resolution kick in.
       // Make sure your source files are compiled, as they will not be processed in any way.
       new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
+      new CleanWebpackPlugin(pathsToClean, cleanOptions),
     ],
   },
   module: {
@@ -121,7 +138,7 @@ module.exports = {
             options: {
               formatter: eslintFormatter,
               eslintPath: require.resolve('eslint'),
-              
+
             },
             loader: require.resolve('eslint-loader'),
           },
@@ -146,6 +163,7 @@ module.exports = {
           /\.gif$/,
           /\.jpe?g$/,
           /\.png$/,
+          /\.scss$/
         ],
         loader: require.resolve('file-loader'),
         options: {
@@ -168,7 +186,7 @@ module.exports = {
         include: paths.appSrc,
         loader: require.resolve('babel-loader'),
         options: {
-          
+
           compact: true,
         },
       },
@@ -185,7 +203,7 @@ module.exports = {
       // use the "style" loader inside the async code so CSS from them won't be
       // in the main CSS file.
       {
-        test: /\.css$/,
+        test: /\.scss$/,
         loader: ExtractTextPlugin.extract(
           Object.assign(
             {
@@ -195,27 +213,35 @@ module.exports = {
                   loader: require.resolve('css-loader'),
                   options: {
                     importLoaders: 1,
+                    localIdentName: '[App]___[hash:base64:5]',
+                    modules: true,
                     minimize: true,
                     sourceMap: true,
                   },
                 },
+                // {
+                //   loader: require.resolve('postcss-loader'),
+                //   options: {
+                //     plugins: () => [
+                //       require('postcss-flexbugs-fixes'),
+                //       autoprefixer({
+                //         browsers: [
+                //           '>1%',
+                //           'last 4 versions',
+                //           'Firefox ESR',
+                //           'not ie < 9', // React doesn't support IE8 anyway
+                //         ],
+                //         flexbox: 'no-2009',
+                //       }),
+                //     ],
+                //   },
+                // },
                 {
-                  loader: require.resolve('postcss-loader'),
+                  loader: require.resolve('sass-loader'),
                   options: {
-                    plugins: () => [
-                      require('postcss-flexbugs-fixes'),
-                      autoprefixer({
-                        browsers: [
-                          '>1%',
-                          'last 4 versions',
-                          'Firefox ESR',
-                          'not ie < 9', // React doesn't support IE8 anyway
-                        ],
-                        flexbox: 'no-2009',
-                      }),
-                    ],
-                  },
-                },
+                    sourceMap: true
+                  }
+                }
               ],
             },
             extractTextPluginOptions
