@@ -87,7 +87,7 @@ module.exports = {
         .replace(/\\/g, '/'),
   },
   devServer: {
-    contentBase: './build'
+    contentBase: path.resolve(__dirname, 'build')
   },
   resolve: {
     // This allows you to set a fallback for where Webpack should look for modules.

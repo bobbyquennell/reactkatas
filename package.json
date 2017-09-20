@@ -58,7 +58,7 @@
     "lint:watch": "npm run lint -- --watch",
     "build": "node scripts/build.js",
     "test": "jest",
-    "postbuild": "node scripts/prodServer.js"
+    "postbuild": "serve build"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -70,6 +70,7 @@
     "jsdom": "^11.2.0",
     "nock": "^9.0.14",
     "node-sass": "^4.5.3",
+    "open": "0.0.5",
     "react-test-renderer": "^15.6.1",
     "redux-immutable-state-invariant": "^2.0.0",
     "redux-mock-store": "^1.3.0",
