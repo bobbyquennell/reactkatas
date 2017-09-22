@@ -2,6 +2,7 @@
   "name": "katas",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://bobbyquennell.github.io/reactkatas",
   "dependencies": {
     "autoprefixer": "7.1.1",
     "axios": "^0.16.2",
@@ -58,7 +59,9 @@
     "lint:watch": "npm run lint -- --watch",
     "build": "node scripts/build.js",
     "test": "jest",
-    "postbuild": "serve build"
+    "postbuild": "serve build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
