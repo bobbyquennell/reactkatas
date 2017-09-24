@@ -6,21 +6,21 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 #### UI/State Management
     react + redux + thunk
-####styling:
+#### Styling
      sass(scss) + css modules
-####New Age JavaScript
+#### New Age JavaScript
      ES2015 with Babel
-####package management:
+#### Package management
      yarn/npm
-####Linting
+#### Linting
       ESLint + Stylelint
-####Static Typing
+#### Static Typing
        Flow
-####Build System
+#### Build System
        Webpack
-####Testing
+#### Testing
      Jest + Enzyme
-####Continuous Integration
+#### Continuous Integration
      Travis CI
-####Hosting
+#### Hosting
      Github Pages
