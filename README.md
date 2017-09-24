@@ -3,7 +3,8 @@ React Sample Project (React Katas)
  [![Build Status](https://travis-ci.org/bobbyquennell/reactkatas.svg?branch=master)](https://travis-ci.org/bobbyquennell/reactkatas)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
-####UI /State Management
+
+#### UI/State Management
     react + redux + thunk
 ####styling:
      sass(scss) + css modules
@@ -23,4 +24,3 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
      Travis CI
 ####Hosting
      Github Pages
-     
