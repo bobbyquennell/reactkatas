@@ -1,0 +1,51 @@
+// @import '../mixins';
+
+@import "../../typography";
+
+@keyframes pulse {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.root {
+  // background-color: rgb(133, 166, 222);
+  //composes: link;
+}
+
+/*  note: try to avoid using sass @extend
+  read: https://www.sitepoint.com/avoid-sass-extend/
+        http://pressupinc.com/blog/2014/11/dont-overextend-yourself-in-sass/
+ */
+
+// .item {
+//   @extend %link;//https://github.com/stylelint/stylelint/issues/1612
+//   font-size: $font-size-big;
+//   font-weight: $font-weight-semi-bold;
+// }
+
+/* composition in a composes way
+  further read: https://glenmaddern.com/articles/css-modules
+  https://css-tricks.com/css-modules-part-1-need/
+*/
+
+.item {
+  composes: link from "../../mixins.scss";
+  font-size: $font-size-big;
+  font-weight: $font-weight-semi-bold;
+  margin: 10px 20px;
+  line-height: 30px;
+  text-transform: uppercase;
+  display: inline-block;
+  &:hover {
+    animation: pulse 1.5s ease-out 0s alternate infinite none running;
+  }
+}
+
+/* some other good reads: https://tylergaw.com/articles/sass-to-postcss */

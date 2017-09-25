@@ -1,0 +1,36 @@
+@import "../../colors";
+
+@keyframes loading {
+  0% { opacity: 0; }
+  75% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.root{
+  display: inline-block;
+}
+.dot {
+  composes: root;
+  background-color: $charcoal;
+  border-radius: 50%;
+  box-shadow: 2px 2px  2px $mid-gray-medium;
+  height: 0.5rem;
+  margin: 0.2rem;
+  width: 0.5rem;
+}
+
+.dot1 {
+  animation: loading 1.8s infinite;
+  composes: dot;
+}
+
+.dot2 {
+  animation: loading 1.8s 0.3s infinite;
+  composes: dot;
+}
+
+.dot3 {
+  animation: loading 1.8s 0.6s infinite;
+  composes: dot;
+}

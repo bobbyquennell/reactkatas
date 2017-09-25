@@ -1,0 +1,43 @@
+.K3 {
+    font-size: 1.5em;
+}
+.centered{
+    float:none;
+    margin:0 auto;
+    text-align: center;
+}
+
+.numbers{
+    margin: 1em auto;
+    border:solid 2px rgb(230, 230, 230);
+    border-radius: 7px;
+    height:50px;
+}
+.number{
+    background-color:rgb(185, 180, 183);
+    text-align: center;
+    display: inline-block;
+    width: 35px;
+    border-radius:50%;
+    margin: 5px 10px;
+    cursor:pointer;
+}
+
+.number.selected{
+    cursor:not-allowed;
+    background-color: rgb(230, 230, 230);
+}
+.number.used{
+    cursor:not-allowed;
+    background-color: rgba(15, 129, 44, 0.5);
+}
+
+.star{
+    margin: 0 10px;
+}
+.clickable{
+    cursor: pointer;
+}
+.container{
+    max-width: 600px;
+}

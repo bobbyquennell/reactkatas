@@ -1,0 +1,14 @@
+//@import "../../../theme";
+
+@import "../../colors";
+
+.root {
+  background-color: $pink;
+  border-radius: 6px;
+  color: $blue;
+  display: inline-block;
+  margin: 10px auto;
+  &:focus {
+    outline: 0;
+  }
+}
