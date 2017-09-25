@@ -4,8 +4,12 @@ node_js:
 cache:
   directories:
     - node_modules
+local_dir:
+  build
+
 script:
   - npm test
+  - npm deploy
 notifications:
     slack: blathome:rUL5aNk7S6jBDrYguVMqIWy4
 deploy:

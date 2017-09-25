@@ -59,7 +59,6 @@
     "lint:watch": "npm run lint -- --watch",
     "build": "node scripts/build.js",
     "test": "jest",
-    "postbuild": "serve build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
