@@ -1,9 +1,0 @@
-// Breakpoint
-$responsive-breakpoint: 740px;
-
-$landscape: 'only screen and (orientation: landscape)' !default;
-$portrait: 'only screen and (orientation: portrait)' !default;
-
-$mobile: #'only screen and (max-width: #{$responsive-breakpoint - 1})';
-
-$desktop: #'only screen and (min-width: #{$responsive-breakpoint})';
