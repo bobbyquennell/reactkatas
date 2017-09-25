@@ -9,6 +9,7 @@ class App extends Component {
     return (
       <div className="App">
         <K4/>
+        haha
       </div>
     );
   }
