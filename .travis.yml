@@ -9,7 +9,7 @@ local_dir:
 
 script:
   - npm test
-  - npm deploy
+  - npm run deploy
 notifications:
     slack: blathome:rUL5aNk7S6jBDrYguVMqIWy4
 deploy:
